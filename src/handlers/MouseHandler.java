@@ -5,6 +5,7 @@ import java.awt.event.MouseMotionListener;
 
 import MMI.RectPanel;
 import MMI.constants;
+import MMI.RandomColor;
 import MMI.constants.*;
 import Shapes.MyEllipse;
 import Shapes.MyLine;
@@ -39,13 +40,24 @@ public class MouseHandler implements MouseListener, MouseMotionListener {
 				rp.addToList(ms);
 			rp.repaint();
 		}
-		
+		if (m == modes.MODE){
+			for(int i = rp.shapesList.size()-1; i >= 0; i--){
+				if (((MyShape) rp.shapesList.get(i)).contains(x,y)){
+					MyShape s = rp.shapesList.get(i);
+					rp.shapesList.remove(i);
+					s.setColor((new RandomColor()).toColor());
+					rp.shapesList.add(i, s);
+					rp.repaint();
+					i = -1;
+				}
+			}
+		}
 		if (m == constants.modes.DELETE){
-			for(int i = 0; i < rp.shapesList.size(); i++){
+			for(int i = rp.shapesList.size()-1; i >= 0; i--){
 				if (((MyShape) rp.shapesList.get(i)).contains(x,y)){
 					rp.shapesList.remove(i);
 					rp.repaint();
-					i = rp.shapesList.size();
+					i = -1;
 				}
 			}
 		}

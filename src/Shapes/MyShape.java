@@ -1,14 +1,17 @@
 package Shapes;
 import java.awt.BasicStroke;
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+
+import MMI.RandomColor;
 
 public abstract class MyShape {
 	protected int xmin = 0;
 	protected int xmax = 600;
 	protected int ymin = 0;
 	protected int ymax = 200;
-	
+	Color c = (new RandomColor()).toColor();
 	protected int x1, y1;
 	public int x2;
 	public int y2;
@@ -16,13 +19,17 @@ public abstract class MyShape {
 
 	public MyShape() {
 		this(0, 0, 0, 0);
+		c = (new RandomColor()).toColor();
 	}
-
+	public void setColor(Color c){
+		this.c = c;
+	}
 	public MyShape(int x1, int y1, int x2, int y2) {
 		this.x1 = x1;
 		this.x2 = x2;
 		this.y1 = y1;
 		this.y2 = y2;
+		c = (new RandomColor()).toColor();
 	}
 
 	public MyShape(int x1, int y1, int x2, int y2, int width, int heigth, int startx, int starty) {
@@ -34,9 +41,11 @@ public abstract class MyShape {
 		this.width = width;
 		this.startx = startx;
 		this.starty = starty;
+		c = (new RandomColor()).toColor();
 	}
 
 	public void draw(Graphics2D g) {
+		g.setPaint(c);
 		width = Math.abs(this.x1 - this.x2);
 		height = Math.abs(this.y1 - this.y2);
 		startx = Math.min(this.x1, this.x2);
