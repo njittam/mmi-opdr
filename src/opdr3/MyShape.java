@@ -1,14 +1,12 @@
-package opdr3;
-
 import java.awt.BasicStroke;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 
 public abstract class MyShape {
-	protected static int xmin = 0;
-	protected static int xmax = 600;
-	protected static int ymin = 0;
-	protected static int ymax = 200;
+	protected int xmin = 0;
+	protected int xmax = 600;
+	protected int ymin = 0;
+	protected int ymax = 200;
 	
 	protected int x1, y1, x2, y2;
 	protected int width, height, startx, starty;
@@ -83,4 +81,6 @@ public abstract class MyShape {
 	public void setY2(int y2) {
 		this.y2 = y2;
 	}
+
+	public abstract boolean contains(int x, int y);
 }

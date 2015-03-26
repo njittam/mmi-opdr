@@ -1,5 +1,3 @@
-package opdr3;
-
 import javax.swing.SwingUtilities;
 
 

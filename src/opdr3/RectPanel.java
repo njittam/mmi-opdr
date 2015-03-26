@@ -1,21 +1,40 @@
-package opdr3;
-
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.List;
 import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
 public class RectPanel extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8421133344664044138L;
 	ArrayList<MyShape> shapesList = new ArrayList<MyShape>();
 	private int modn = 1;
 	public RandomColor color ;
+	
+	constants.SHAPE shape = constants.SHAPE.NONE;
+	MouseHandler mh = new MouseHandler(constants.SHAPE.NONE,this);
 	public RectPanel(){
 		super ();
 		this.color = new RandomColor() ;
+		this.addMouseListener(mh);
 	}
-
+	public void addToList(MyShape s){
+		this.shapesList.add(s);
+		modn=1;
+	}
+	public void insert_in_list(MyShape s){
+		shapesList.remove(shapesList.size() - modn);
+		shapesList.add(shapesList.size() - modn + 1,s);
+	}
+	
+	public void raise_modn(){
+		modn++;
+		if (modn > shapesList.size())
+			modn = 1;
+		super.repaint();
+	}
 	@Override
 	public void paintComponent ( Graphics g) {
 		super . paintComponent (g );
@@ -50,14 +69,33 @@ public class RectPanel extends JPanel {
 	}
 
 	public void alterNextShape(){
-		MyShape s = shapesList.get(shapesList.size() - modn);
-		s = generateShape();
-		shapesList.remove(shapesList.size() - modn);
-		shapesList.add(shapesList.size() - modn + 1,s);
-		modn++;
-		if (modn > shapesList.size())
-			modn = 1;
+		MyShape s = generateShape();
+		this.insert_in_list(s);
+		this.raise_modn();
 		super.repaint();
+	}
+	public void tool(){
+		mh.m = constants.modes.TOOL;
+		mh.s = shape;
+	}
+	public void mode(){
+		mh.m = constants.modes.MODE;
+	}
+	public void addRandomLine(){
+		shape = constants.SHAPE.LINE;
+		
+	}
+	public void addRandomEllipse(){
+		shape = constants.SHAPE.ELLIPSE;
+	}
+	public void addRandomRectangle(){
+		shape = constants.SHAPE.RECT;
+		
+	}
+
+	public void delete() {
+		// TODO Auto-generated method stub
+		mh.m = constants.modes.DELETE;
 	}
 
 }
