@@ -1,8 +1,8 @@
 package MMI;
+import handlers.ButtonHandler;
+
 import javax.swing.JButton;
 import javax.swing.JPanel;
-
-import Shapes.RectPanel;
 
 public class ButtonPanel extends JPanel {
 	
@@ -10,7 +10,7 @@ public class ButtonPanel extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = -697478526173572538L;
-		RectPanel rp;
+		public RectPanel rp;
 		JButton b;
 		public ButtonPanel (RectPanel rp, String text, constants.functions add) {
 			super ();

@@ -1,8 +1,8 @@
-package MMI;
+package Shapes;
 import java.awt.Graphics2D;
 import java.awt.geom.Ellipse2D;
 
-import Shapes.MyShape;
+import MMI.RandomColor;
 
 
 public class MyEllipse extends MyShape {
@@ -12,7 +12,6 @@ public class MyEllipse extends MyShape {
 		int xmax = super.xmax;
 		int ymin = super.ymin;
 		int ymax = super.ymax;
-		int verhor = RandomColor.randInt(0,1);
 		xmin = RandomColor.randInt(xmin,xmax-1);
 		xmax = RandomColor.randInt(xmin + 1,xmax);
 		ymin = RandomColor.randInt(ymin,ymax-1);
@@ -36,7 +35,6 @@ public class MyEllipse extends MyShape {
 		int xmax = super.xmax;
 		int ymin = super.ymin;
 		int ymax = super.ymax;
-		int verhor = RandomColor.randInt(0,1);
 		xmin = x;
 		xmax = RandomColor.randInt(xmin + 1,xmax);
 		ymin = y;
@@ -51,13 +49,13 @@ public class MyEllipse extends MyShape {
 	@Override
 	public void draw(Graphics2D g) {
 		super.draw(g);
-		Ellipse2D.Double rect = new Ellipse2D.Double(startx, starty, width,height);
-		g.draw(rect);
+		Ellipse2D.Double ellip = new Ellipse2D.Double(startx, starty, width,height);
+		g.draw(ellip);
 	}
 
 	@Override
 	public boolean contains(int x, int y) {
-		// TODO Auto-generated method stub
-		return false;
+		Ellipse2D.Double ellip = new Ellipse2D.Double(startx, starty, width,height);
+		return ellip.intersects(x-1, y-1, 1, 1);
 	}
 }

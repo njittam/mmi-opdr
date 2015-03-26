@@ -63,12 +63,12 @@ public class MyLine extends MyShape{
 	@Override
 	public void draw(Graphics2D g) {
 		super.draw(g);
-		Line2D.Double rect = new Line2D.Double(startx, starty, width,height);
-		g.draw(rect);
+		Line2D.Double line = new Line2D.Double(x1, y1, x2,y2);
+		g.draw(line);
 	}
 	@Override
 	public boolean contains(int x, int y) {
-		
-		return true;
+		Line2D.Double line = new Line2D.Double(x1, y1, x2,y2);
+		return line.intersects(x, y, 1, 1);
 	}
 }

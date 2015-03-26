@@ -1,17 +1,15 @@
-package MMI;
-import java.awt.MouseInfo;
-import java.awt.Point;
-import java.awt.PointerInfo;
+package handlers;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
-import javax.swing.SwingUtilities;
-
+import MMI.RectPanel;
+import MMI.constants;
+import MMI.constants.*;
+import Shapes.MyEllipse;
 import Shapes.MyLine;
 import Shapes.MyRectangle;
 import Shapes.MyShape;
-import Shapes.RectPanel;
 
 
 public class MouseHandler implements MouseListener, MouseMotionListener {
@@ -21,29 +19,27 @@ public class MouseHandler implements MouseListener, MouseMotionListener {
 	public constants.modes m;
 	public MouseHandler(constants.SHAPE s, RectPanel r){
 		super();
-		this.s=s;
+		this.s = s;
 		this.rp = r;
 	}
+	
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-		PointerInfo a = MouseInfo.getPointerInfo();
-		Point point = new Point(a.getLocation());
-		SwingUtilities.convertPointFromScreen(point, e.getComponent());
-		int x=(int) point.getX();
-		int y=(int) point.getY();
+		int x=(int) e.getX();
+		int y=(int) e.getY();
 		System.out.println("("+x+", "+y+")");
 		if (m == constants.modes.TOOL){
-			if (s == constants.SHAPE.LINE)
+			if (s == SHAPE.LINE)
 				ms = new MyLine(x,y);
-			if (s == constants.SHAPE.ELLIPSE)
+			if (s == SHAPE.ELLIPSE)
 				ms = new MyEllipse(x,y);
-			if (s == constants.SHAPE.RECT)
+			if (s == SHAPE.RECT)
 				ms = new MyRectangle(x,y);
 			if (ms != null)
 				rp.addToList(ms);
 			rp.repaint();
 		}
+		
 		if (m == constants.modes.DELETE){
 			for(int i = 0; i < rp.shapesList.size(); i++){
 				if (((MyShape) rp.shapesList.get(i)).contains(x,y)){
@@ -70,7 +66,18 @@ public class MouseHandler implements MouseListener, MouseMotionListener {
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
-
+		int x=(int) e.getX();
+		int y=(int) e.getY();
+		if (m == modes.TOOL){
+			if (s == SHAPE.LINE)
+				ms = new MyLine(x,y,x,y);
+			if (s == SHAPE.ELLIPSE)
+				ms = new MyEllipse(x,y,x,y);
+			if (s == SHAPE.RECT)
+				ms = new MyRectangle(x,y,x,y);
+			if (ms != null)
+				rp.addToList(ms);
+		}
 	}
 
 	@Override
@@ -80,13 +87,22 @@ public class MouseHandler implements MouseListener, MouseMotionListener {
 	}
 
 	@Override
-	public void mouseDragged(MouseEvent arg0) {
+	public void mouseDragged(MouseEvent e) {
 		// TODO Auto-generated method stub
-
+		int x=(int) e.getX();
+		int y=(int) e.getY();
+		if (m == modes.TOOL){
+			ms = rp.shapesList.get(rp.shapesList.size() -1);
+			ms.x2 = x;
+			ms.y2 = y;
+			rp.shapesList.remove(rp.shapesList.size() -1);
+			rp.shapesList.add(ms);
+			rp.repaint();
+		}
 	}
 
 	@Override
-	public void mouseMoved(MouseEvent arg0) {
+	public void mouseMoved(MouseEvent e) {
 		// TODO Auto-generated method stub
 
 	}

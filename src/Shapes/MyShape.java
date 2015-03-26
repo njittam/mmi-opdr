@@ -9,7 +9,9 @@ public abstract class MyShape {
 	protected int ymin = 0;
 	protected int ymax = 200;
 	
-	protected int x1, y1, x2, y2;
+	protected int x1, y1;
+	public int x2;
+	public int y2;
 	protected int width, height, startx, starty;
 
 	public MyShape() {

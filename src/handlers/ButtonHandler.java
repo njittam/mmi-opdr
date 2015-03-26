@@ -1,12 +1,16 @@
-package MMI;
+package handlers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import MMI.ButtonPanel;
+import MMI.constants;
+import MMI.constants.functions;
 
 
 public class ButtonHandler implements ActionListener {
 	ButtonPanel bp;
 	private constants.functions function;
-	public ButtonHandler(ButtonPanel bp,constants.functions add){
+	public ButtonHandler(ButtonPanel bp,functions add){
 		this.bp = bp;
 		this.function = add;
 	}
@@ -14,34 +18,34 @@ public class ButtonHandler implements ActionListener {
 	public void actionPerformed ( ActionEvent e ) {
 		// TODO : add code here that will
 		// be ran when the button is clicked
-		if (function == constants.functions.RANDOMCOLOR){
+		if (function ==functions.RANDOMCOLOR){
 			bp.rp.RandomColor();
 			//bp.rp.color.newColor();
 			//bp.setText(bp.rp.color.toString());
 			//bp.rp.repaint();
 		}
-		if (function == constants.functions.ADD){
+		if (function == functions.ADD){
 			bp.rp.addRandomShape();
 		}
-		if (function == constants.functions.MOD){
+		if (function == functions.MOD){
 			bp.rp.alterNextShape();
 		}
-		if (function == constants.functions.TOOL){
+		if (function == functions.TOOL){
 			bp.rp.tool();
 		}
-		if (function == constants.functions.MODE){
+		if (function == functions.MODE){
 			bp.rp.mode();
 		}
-		if (function == constants.functions.ELLIPSE){
+		if (function == functions.ELLIPSE){
 			bp.rp.addRandomEllipse();
 		}
-		if (function == constants.functions.RECTANGLE){
+		if (function == functions.RECTANGLE){
 			bp.rp.addRandomRectangle();
 		}
-		if (function == constants.functions.LINE){
+		if (function == functions.LINE){
 			bp.rp.addRandomLine();
 		}
-		if (function == constants.functions.DELETE){
+		if (function == functions.DELETE){
 			bp.rp.delete();
 		}
 	}

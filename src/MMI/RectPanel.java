@@ -1,16 +1,17 @@
-package Shapes;
+package MMI;
+import handlers.MouseHandler;
+
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
-import MMI.MouseHandler;
-import MMI.MyEllipse;
-import MMI.RandomColor;
-import MMI.constants;
-import MMI.constants.SHAPE;
-import MMI.constants.modes;
+import MMI.constants.*;
+import Shapes.MyEllipse;
+import Shapes.MyLine;
+import Shapes.MyRectangle;
+import Shapes.MyShape;
 
 public class RectPanel extends JPanel {
 	/**
@@ -27,6 +28,7 @@ public class RectPanel extends JPanel {
 		super ();
 		this.color = new RandomColor() ;
 		this.addMouseListener(mh);
+		this.addMouseMotionListener(mh);
 	}
 	public void addToList(MyShape s){
 		this.shapesList.add(s);
@@ -46,8 +48,7 @@ public class RectPanel extends JPanel {
 	@Override
 	public void paintComponent ( Graphics g) {
 		super . paintComponent (g );
-		g.setColor ( this.color.toColor() );
-		//g.fillRect (0 , 0 , 0 , 0);	
+		g.setColor ( this.color.toColor() );	
 		Graphics2D g2d = (Graphics2D) g;
 		for (MyShape s : shapesList)
 			s.draw(g2d);
@@ -83,27 +84,26 @@ public class RectPanel extends JPanel {
 		super.repaint();
 	}
 	public void tool(){
-		mh.m = constants.modes.TOOL;
+		mh.m = modes.TOOL;
 		mh.s = shape;
 	}
 	public void mode(){
-		mh.m = constants.modes.MODE;
+		mh.m = modes.MODE;
 	}
 	public void addRandomLine(){
-		shape = constants.SHAPE.LINE;
+		shape = SHAPE.LINE;
 		
 	}
 	public void addRandomEllipse(){
-		shape = constants.SHAPE.ELLIPSE;
+		shape = SHAPE.ELLIPSE;
 	}
 	public void addRandomRectangle(){
-		shape = constants.SHAPE.RECT;
-		
+		shape = SHAPE.RECT;
 	}
 
 	public void delete() {
 		// TODO Auto-generated method stub
-		mh.m = constants.modes.DELETE;
+		mh.m = modes.DELETE;
 	}
 
 }

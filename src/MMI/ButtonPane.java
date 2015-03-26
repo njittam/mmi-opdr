@@ -3,8 +3,6 @@ import java.awt.Container;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
-import Shapes.RectPanel;
-
 
 public class ButtonPane extends Container{
 	/**
