@@ -1,5 +1,8 @@
+package MMI;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+
+import Shapes.RectPanel;
 
 public class ButtonPanel extends JPanel {
 	

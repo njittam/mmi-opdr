@@ -1,3 +1,4 @@
+package MMI;
 import java.awt.MouseInfo;
 import java.awt.Point;
 import java.awt.PointerInfo;
@@ -7,12 +8,17 @@ import java.awt.event.MouseMotionListener;
 
 import javax.swing.SwingUtilities;
 
+import Shapes.MyLine;
+import Shapes.MyRectangle;
+import Shapes.MyShape;
+import Shapes.RectPanel;
+
 
 public class MouseHandler implements MouseListener, MouseMotionListener {
-	constants.SHAPE s;
+	public constants.SHAPE s;
 	MyShape ms;
 	RectPanel rp;
-	constants.modes m;
+	public constants.modes m;
 	public MouseHandler(constants.SHAPE s, RectPanel r){
 		super();
 		this.s=s;

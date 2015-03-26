@@ -1,15 +1,23 @@
+package Shapes;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
+import MMI.MouseHandler;
+import MMI.MyEllipse;
+import MMI.RandomColor;
+import MMI.constants;
+import MMI.constants.SHAPE;
+import MMI.constants.modes;
+
 public class RectPanel extends JPanel {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -8421133344664044138L;
-	ArrayList<MyShape> shapesList = new ArrayList<MyShape>();
+	public ArrayList<MyShape> shapesList = new ArrayList<MyShape>();
 	private int modn = 1;
 	public RandomColor color ;
 	

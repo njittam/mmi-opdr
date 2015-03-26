@@ -1,9 +1,12 @@
+package MMI;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
 import javax.swing.JFrame;
+
+import Shapes.RectPanel;
 public class Window extends JFrame{
 	public Window () {
 		// ’super ’ calls a function inherited from the parent class ( JFrame )

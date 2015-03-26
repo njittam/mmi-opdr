@@ -1,5 +1,8 @@
+package MMI;
 import java.awt.Graphics2D;
 import java.awt.geom.Ellipse2D;
+
+import Shapes.MyShape;
 
 
 public class MyEllipse extends MyShape {
