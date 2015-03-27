@@ -16,13 +16,8 @@ public class ButtonHandler implements ActionListener {
 	}
 
 	public void actionPerformed ( ActionEvent e ) {
-		// TODO : add code here that will
-		// be ran when the button is clicked
 		if (function ==functions.RANDOMCOLOR){
 			bp.rp.RandomColor();
-			//bp.rp.color.newColor();
-			//bp.setText(bp.rp.color.toString());
-			//bp.rp.repaint();
 		}
 		if (function == functions.ADD){
 			bp.rp.addRandomShape();

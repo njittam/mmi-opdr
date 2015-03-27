@@ -50,7 +50,8 @@ public class MyRectangle extends MyShape {
 
 	@Override
 	public boolean contains(int x, int y) {
-		return x>= x1 && x <=x2 && y>= y1 && y <=y2;//|| x<= x1 && x >=x2 && y<= y1 && y >=y2;
+		Rectangle2D.Double rect = new Rectangle2D.Double(startx, starty, width, height);
+		return rect.intersects(x-1, y-1, 1, 1);
 	}
 
 }
