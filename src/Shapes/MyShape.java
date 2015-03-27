@@ -31,7 +31,7 @@ public abstract class MyShape {
 		this.y2 = y2;
 		c = (new RandomColor()).toColor();
 	}
-
+	// test
 	public MyShape(int x1, int y1, int x2, int y2, int width, int heigth, int startx, int starty) {
 		this.x1 = x1;
 		this.x2 = x2;
