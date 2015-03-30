@@ -18,6 +18,9 @@ public class MouseHandler implements MouseListener, MouseMotionListener {
 	MyShape ms;
 	RectPanel rp;
 	public constants.modes m;
+	public int old_x;
+	public int old_y;
+	public int index;
 	public MouseHandler(constants.SHAPE s, RectPanel r){
 		super();
 		this.s = s;
@@ -90,12 +93,31 @@ public class MouseHandler implements MouseListener, MouseMotionListener {
 			if (ms != null)
 				rp.addToList(ms);
 		}
+		if (m == modes.MODE){
+			this.old_x = x;
+			this.old_y = y;
+			for(int i = rp.shapesList.size()-1; i >= 0; i--){
+				if (((MyShape) rp.shapesList.get(i)).contains(x,y)){
+					this.index = i;
+					i = -1;
+				}
+			}
+		}
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-
+		// TODO dit moet naar dragged en olx_x en old_y moeten daar geupdate worden
+		
+		if (m == modes.MODE){
+			int dy= old_y  - e.getY();
+			int dx = old_x - e.getX();
+			rp.shapesList.get(index).setX1(rp.shapesList.get(index).getX1()-dx);
+			rp.shapesList.get(index).setX2(rp.shapesList.get(index).getX2()-dx);
+			rp.shapesList.get(index).setY1(rp.shapesList.get(index).getY1()-dy);
+			rp.shapesList.get(index).setY2(rp.shapesList.get(index).getY2()-dy);
+			rp.repaint();
+		}
 	}
 
 	@Override
@@ -111,6 +133,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener {
 			rp.shapesList.add(ms);
 			rp.repaint();
 		}
+		
 	}
 
 	@Override
