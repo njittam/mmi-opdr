@@ -40,7 +40,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener {
 				rp.addToList(ms);
 			rp.repaint();
 		}
-		if (m == modes.MODE){
+		if (m == modes.COLOR){
 			for(int i = rp.shapesList.size()-1; i >= 0; i--){
 				if (((MyShape) rp.shapesList.get(i)).contains(x,y)){
 					MyShape s = rp.shapesList.get(i);

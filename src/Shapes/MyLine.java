@@ -60,6 +60,7 @@ public class MyLine extends MyShape{
 			this.y2 = ymax;
 		}
 	}
+
 	@Override
 	public void draw(Graphics2D g) {
 		super.draw(g);

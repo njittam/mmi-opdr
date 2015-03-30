@@ -55,9 +55,7 @@ public class RectPanel extends JPanel {
 		super.repaint();
 	}
 	public void RandomColor(){
-		this.color.newColor();
-		//setText(this.color.toString());
-		this.repaint();
+		mh.m = modes.COLOR;
 	}
 	MyShape generateShape(){
 		int r = RandomColor.randInt(0,2);

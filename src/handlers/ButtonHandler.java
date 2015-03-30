@@ -14,7 +14,7 @@ public class ButtonHandler implements ActionListener {
 		this.bp = bp;
 		this.function = add;
 	}
-
+	
 	public void actionPerformed ( ActionEvent e ) {
 		if (function ==functions.RANDOMCOLOR){
 			bp.rp.RandomColor();
