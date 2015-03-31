@@ -23,7 +23,7 @@ public class Window extends JFrame{
 		RectPanel rp = new RectPanel ();
 		super.getContentPane().add (rp , BorderLayout.CENTER );
 		ButtonPane bp = new ButtonPane(rp);
-		super.getContentPane().add (bp , BorderLayout.NORTH );
+		super.getContentPane().add (bp , BorderLayout.EAST );
 		super.setVisible ( true );
 	}
 }

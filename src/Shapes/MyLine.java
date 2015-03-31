@@ -70,6 +70,6 @@ public class MyLine extends MyShape{
 	@Override
 	public boolean contains(int x, int y) {
 		Line2D.Double line = new Line2D.Double(x1, y1, x2,y2);
-		return line.intersects(x-1, y-1, 2, 2);
+		return line.intersects(x-4, y-4, 8, 8);
 	}
 }

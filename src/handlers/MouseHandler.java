@@ -27,7 +27,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener {
 		this.rp = r;
 	}
 	
-	//@Override
+	@Override
 	public void mouseClicked(MouseEvent e) {
 		int x=(int) e.getX();
 		int y=(int) e.getY();
@@ -66,19 +66,19 @@ public class MouseHandler implements MouseListener, MouseMotionListener {
 		}
 	}
 
-	//@Override
+	@Override
 	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
 
 	}
 
-	//@Override
+	@Override
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
 
 	}
 
-	//@Override
+	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
 		int x=(int) e.getX();
@@ -105,22 +105,16 @@ public class MouseHandler implements MouseListener, MouseMotionListener {
 		}
 	}
 
-	//@Override
+	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO dit moet naar dragged en olx_x en old_y moeten daar geupdate worden
-		
 		if (m == modes.MODE){
-			int dy= old_y  - e.getY();
-			int dx = old_x - e.getX();
-			rp.shapesList.get(index).setX1(rp.shapesList.get(index).getX1()-dx);
-			rp.shapesList.get(index).setX2(rp.shapesList.get(index).getX2()-dx);
-			rp.shapesList.get(index).setY1(rp.shapesList.get(index).getY1()-dy);
-			rp.shapesList.get(index).setY2(rp.shapesList.get(index).getY2()-dy);
-			rp.repaint();
+			index = -1;
 		}
+		
 	}
 
-	//@Override
+	@Override
 	public void mouseDragged(MouseEvent e) {
 		// TODO Auto-generated method stub
 		int x=(int) e.getX();
@@ -133,10 +127,23 @@ public class MouseHandler implements MouseListener, MouseMotionListener {
 			rp.shapesList.add(ms);
 			rp.repaint();
 		}
+		if (m == modes.MODE){
+			int dy= old_y  - e.getY();
+			int dx = old_x - e.getX();
+			if (index >= 0 && index < rp.shapesList.size()){
+				rp.shapesList.get(index).setX1(rp.shapesList.get(index).getX1()-dx);
+				rp.shapesList.get(index).setX2(rp.shapesList.get(index).getX2()-dx);
+				rp.shapesList.get(index).setY1(rp.shapesList.get(index).getY1()-dy);
+				rp.shapesList.get(index).setY2(rp.shapesList.get(index).getY2()-dy);
+				rp.repaint();
+			}
+			this.old_x = x;
+			this.old_y = y;
+		}
 		
 	}
 
-	//@Override
+	@Override
 	public void mouseMoved(MouseEvent e) {
 		// TODO Auto-generated method stub
 

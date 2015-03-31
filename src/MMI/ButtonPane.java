@@ -3,6 +3,8 @@ import java.awt.Container;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
+import javax.swing.JSlider;
+
 
 public class ButtonPane extends Container{
 	/**
@@ -22,6 +24,7 @@ public class ButtonPane extends Container{
 		ButtonPanel rectButton = new ButtonPanel(rp, " Rectangle ", constants.functions.RECTANGLE);
 		ButtonPanel elipButton = new ButtonPanel(rp, " Ellipse ", constants.functions.ELLIPSE);
 		ButtonPanel deleButton = new ButtonPanel(rp, " Delete ", constants.functions.DELETE);
+		JSlider s = new JSlider ();
 		GridBagConstraints c = new GridBagConstraints();
 		c.fill = GridBagConstraints.HORIZONTAL;
 	    c.gridx = 0;
@@ -68,7 +71,11 @@ public class ButtonPane extends Container{
 	    c.gridx = 2;
 	    c.gridy = 2;
 		this.add(rectButton  , c);
-		
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.weightx = 0.5;
+	    c.gridx = 0;
+	    c.gridy = 3;
+		this.add(s  , c);		
 		
 	}
 }
