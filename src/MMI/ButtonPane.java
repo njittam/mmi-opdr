@@ -75,7 +75,8 @@ public class ButtonPane extends Container{
 		c.weightx = 0.5;
 	    c.gridx = 0;
 	    c.gridy = 3;
-		this.add(s  , c);		
+	    SliderPane sp = new SliderPane();
+		this.add(sp  , c);		
 		
 	}
 }

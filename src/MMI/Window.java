@@ -24,6 +24,7 @@ public class Window extends JFrame{
 		super.getContentPane().add (rp , BorderLayout.CENTER );
 		ButtonPane bp = new ButtonPane(rp);
 		super.getContentPane().add (bp , BorderLayout.EAST );
+		super.getContentPane().add (new SliderPane() , BorderLayout.NORTH);
 		super.setVisible ( true );
 	}
 }
