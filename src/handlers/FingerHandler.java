@@ -37,6 +37,9 @@ public class FingerHandler implements FingerListener{
 	}
 	//TODO als fingers verdwijne/verschijne kijken of dat ook bedoelt is.
 	//bijv door aantal keer aanroepen te onthouden sinds verchijnen
+	//TODO check of coordinaten kloppen
+	//TODO moeten OFF_screen fingers gehandeld worden?
+	
 	public void finger_added(FingerEvent e){
 		
 	}

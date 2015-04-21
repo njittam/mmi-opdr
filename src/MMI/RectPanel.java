@@ -23,21 +23,28 @@ public class RectPanel extends JPanel {
 	public ArrayList<MyPoint> pointList = new ArrayList<MyPoint>();
 	private int modn = 1;
 	public RandomColor color ;
+	
 	public void add_point(int x, int y){
 		pointList.add(new MyPoint(x,y));
 		this.repaint();
 	}
+	
 	public void remove_point(int x, int y){
 		for (int i = 0; i < pointList.size();i++){
-			if (pointList.get(i)== new MyPoint(x,y)){
+			if (pointList.get(i).same(new MyPoint(x,y))){
 				pointList.remove(i);
 				i--;
 			}
 		}
 		this.repaint();
 	}
-	public void move_point(){
-		//TODO add code
+	
+	public void move_point(int x_new, int y_new, int x_old, int y_old){
+		for (int i = 0; i < pointList.size() ; i++){
+			if (pointList.get(i).same(new MyPoint(x_old,y_old))){
+				pointList.set(i, new MyPoint(x_new, y_new));
+			}
+		}
 		this.repaint();
 	}
 	
