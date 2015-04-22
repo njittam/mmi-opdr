@@ -1,10 +1,16 @@
 package handlers;
 
+import java.util.ArrayList;
+
 import wiitracker.fingertracking.Finger;
 import wiitracker.fingertracking.FingerEvent;
 import wiitracker.fingertracking.FingerListener;
 import MMI.RectPanel;
 
+/**
+ * @author mattijn
+ *
+ */
 public class FingerHandler implements FingerListener{
 	private int old_fingers = 0;
 	private Finger[] old_fingers_list;
@@ -40,6 +46,21 @@ public class FingerHandler implements FingerListener{
 	//TODO check of coordinaten kloppen
 	//TODO moeten OFF_screen fingers gehandeld worden?
 	
+	/**
+	 * @param old_list
+	 * @param new_list
+	 * @return
+	 */
+	public  ArrayList<Finger> diff_added(Finger[] old_list, Finger[] new_list){
+		ArrayList<Finger> diff = null;
+		
+		return diff;
+	}
+	public  ArrayList<Finger> diff_rem(Finger[] old_list, Finger[] new_list){
+		ArrayList<Finger>  diff = null;
+		//TODO addcode 
+		return diff;
+	}
 	public void finger_added(FingerEvent e){
 		
 	}

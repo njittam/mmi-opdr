@@ -8,5 +8,7 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="C:/Users/Mattijn/git/mmi-opdr/libs/WiiFingerTracker.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Mattijn/git/mmi-opdr/libs/bluecove-2.1.0.jar"/>
+	<classpathentry kind="lib" path="/home/mattijn/git/mmi-opdr/libs/bluecove-2.1.0.jar"/>
+	<classpathentry kind="lib" path="/home/mattijn/git/mmi-opdr/libs/WiiFingerTracker.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
