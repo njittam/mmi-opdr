@@ -14,6 +14,10 @@ import Shapes.MyPoint;
 import Shapes.MyRectangle;
 import Shapes.MyShape;
 
+/**
+ * @author mattijn
+ * @author Tijs
+ */
 public class RectPanel extends JPanel {
 	/**
 	 * 
@@ -23,15 +27,24 @@ public class RectPanel extends JPanel {
 	public ArrayList<MyPoint> pointList = new ArrayList<MyPoint>();
 	private int modn = 1;
 	public RandomColor color ;
-	
+	constants.SHAPE shape = constants.SHAPE.NONE;
+	MouseHandler mh = new MouseHandler(constants.SHAPE.NONE,this);
+	/**
+	 * @param x
+	 * @param y
+	 */
 	public void add_point(int x, int y){
 		pointList.add(new MyPoint(x,y));
 		this.repaint();
 	}
 	
+	/**
+	 * @param x
+	 * @param y
+	 */
 	public void remove_point(int x, int y){
 		for (int i = 0; i < pointList.size();i++){
-			if (pointList.get(i).same(new MyPoint(x,y))){
+			if (pointList.get(i).equals(new MyPoint(x,y))){
 				pointList.remove(i);
 				i--;
 			}
@@ -39,38 +52,61 @@ public class RectPanel extends JPanel {
 		this.repaint();
 	}
 	
+	/**
+	 * @param x_new
+	 * @param y_new
+	 * @param x_old
+	 * @param y_old
+	 */
 	public void move_point(int x_new, int y_new, int x_old, int y_old){
 		for (int i = 0; i < pointList.size() ; i++){
-			if (pointList.get(i).same(new MyPoint(x_old,y_old))){
+			if (pointList.get(i).equals(new MyPoint(x_old,y_old))){
 				pointList.set(i, new MyPoint(x_new, y_new));
 			}
 		}
 		this.repaint();
 	}
 	
-	constants.SHAPE shape = constants.SHAPE.NONE;
-	MouseHandler mh = new MouseHandler(constants.SHAPE.NONE,this);
+	
+	/**
+	 * 
+	 */
 	public RectPanel(){
 		super ();
 		this.color = new RandomColor() ;
 		this.addMouseListener(mh);
 		this.addMouseMotionListener(mh);
 	}
+	
+	/**
+	 * @param s
+	 */
 	public void addToList(MyShape s){
 		this.shapesList.add(s);
 		modn=1;
 	}
+	
+	/**
+	 * @param s
+	 */
 	public void insert_in_list(MyShape s){
 		shapesList.remove(shapesList.size() - modn);
 		shapesList.add(shapesList.size() - modn + 1,s);
 	}
 	
+	/**
+	 * 
+	 */
 	public void raise_modn(){
 		modn++;
 		if (modn > shapesList.size())
 			modn = 1;
 		super.repaint();
 	}
+	
+	/* (non-Javadoc)
+	 * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
+	 */
 	@Override
 	public void paintComponent ( Graphics g) {
 		super . paintComponent (g );
@@ -83,9 +119,17 @@ public class RectPanel extends JPanel {
 		}
 		super.repaint();
 	}
+	
+	/**
+	 * 
+	 */
 	public void RandomColor(){
 		mh.m = modes.COLOR;
 	}
+	
+	/**
+	 * @return
+	 */
 	MyShape generateShape(){
 		int r = RandomColor.randInt(0,2);
 		if (r ==0 )
@@ -96,6 +140,10 @@ public class RectPanel extends JPanel {
 			return new MyEllipse();
 		else return null;
 	}
+	
+	/**
+	 * 
+	 */
 	public void addRandomShape(){
 		MyShape r = generateShape();
 		modn = 1;
@@ -104,30 +152,56 @@ public class RectPanel extends JPanel {
 		super.repaint();
 	}
 
+	/**
+	 * 
+	 */
 	public void alterNextShape(){
 		MyShape s = generateShape();
 		this.insert_in_list(s);
 		this.raise_modn();
 		super.repaint();
 	}
+	
+	/**
+	 * 
+	 */
 	public void tool(){
 		mh.m = modes.TOOL;
 		mh.s = shape;
 	}
+	
+	/**
+	 * 
+	 */
 	public void mode(){
 		mh.m = modes.MODE;
 	}
+	
+	/**
+	 * 
+	 */
 	public void addRandomLine(){
 		shape = SHAPE.LINE;
 		
 	}
+	
+	/**
+	 * 
+	 */
 	public void addRandomEllipse(){
 		shape = SHAPE.ELLIPSE;
 	}
+	
+	/**
+	 * 
+	 */
 	public void addRandomRectangle(){
 		shape = SHAPE.RECT;
 	}
 
+	/**
+	 * 
+	 */
 	public void delete() {
 		// TODO Auto-generated method stub
 		mh.m = modes.DELETE;

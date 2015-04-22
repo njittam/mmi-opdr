@@ -7,14 +7,26 @@ import MMI.constants;
 import MMI.constants.functions;
 
 
+/**
+ * @author mattijn
+ * @author Tijs
+ * 
+ */
 public class ButtonHandler implements ActionListener {
 	ButtonPanel bp;
 	private constants.functions function;
+	/**
+	 * @param bp
+	 * @param add
+	 */
 	public ButtonHandler(ButtonPanel bp,functions add){
 		this.bp = bp;
 		this.function = add;
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+	 */
 	public void actionPerformed ( ActionEvent e ) {
 		if (function ==functions.RANDOMCOLOR){
 			bp.rp.RandomColor();

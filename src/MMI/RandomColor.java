@@ -3,8 +3,18 @@ import java.awt.Color;
 import java.util.Random;
 
 
+/**
+ * @author Mattijn
+ * @author Tijs
+ */
 public class RandomColor {
 	 Color color;
+	
+	 /**
+	 * @param min
+	 * @param max
+	 * @return
+	 */
 	public static int randInt(int min, int max) {
 
 	    // NOTE: Usually this should be a field rather than a method
@@ -19,16 +29,31 @@ public class RandomColor {
 	    
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	public String toString(){
 		return this.color.toString();
 	}
+	
+	/**
+	 * @return
+	 */
 	public Color toColor() {
 		return this.color;
 	}
+	
+	/**
+	 * 
+	 */
 	public void newColor(){
 		this.color = new Color(randInt(0,255),randInt(0,255),randInt(0,255));
 	}
+	
+	/**
+	 * 
+	 */
 	public RandomColor(){
-    this.color = new Color(randInt(0,255),randInt(0,255),randInt(0,255));	
+		this.color = new Color(randInt(0,255),randInt(0,255),randInt(0,255));	
     }
 }

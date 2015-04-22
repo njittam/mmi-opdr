@@ -9,15 +9,24 @@ import MMI.RectPanel;
 
 /**
  * @author mattijn
- *
+ * @author Tijs
+ * 
  */
 public class FingerHandler implements FingerListener{
 	private int old_fingers = 0;
 	private Finger[] old_fingers_list;
 	private RectPanel rp;
+	
+	/**
+	 * @param rp
+	 */
 	public FingerHandler(RectPanel rp){
 		this.rp = rp;
 	}
+	
+	/* (non-Javadoc)
+	 * @see wiitracker.fingertracking.FingerListener#fingerChanged(wiitracker.fingertracking.FingerEvent)
+	 */
 	@Override
 	public void fingerChanged(FingerEvent e) {
 		switch(e.getFingers().length - old_fingers){
@@ -39,8 +48,8 @@ public class FingerHandler implements FingerListener{
 			break;
 		}
 		old_fingers_list = e.getFingers();
-		
 	}
+	
 	//TODO als fingers verdwijne/verschijne kijken of dat ook bedoelt is.
 	//bijv door aantal keer aanroepen te onthouden sinds verchijnen
 	//TODO check of coordinaten kloppen
@@ -56,17 +65,35 @@ public class FingerHandler implements FingerListener{
 		
 		return diff;
 	}
+	
+	/**
+	 * @param old_list
+	 * @param new_list
+	 * @return
+	 */
 	public  ArrayList<Finger> diff_rem(Finger[] old_list, Finger[] new_list){
 		ArrayList<Finger>  diff = null;
 		//TODO addcode 
 		return diff;
 	}
+	
+	/**
+	 * @param e
+	 */
 	public void finger_added(FingerEvent e){
 		
 	}
+	
+	/**
+	 * @param e
+	 */
 	public void finger_removed(FingerEvent e){
 		
 	}
+	
+	/**
+	 * @param e
+	 */
 	public void finger_moved(FingerEvent e){
 		
 	}

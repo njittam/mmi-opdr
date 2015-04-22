@@ -2,6 +2,10 @@ package MMI;
 import javax.swing.SwingUtilities;
 
 
+/**
+ * @author mattijn
+ * @author Tijs
+ */
 public class Main {
 
 	/**

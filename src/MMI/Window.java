@@ -3,12 +3,20 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
+
+/**
+ * @author mattijn
+ * @author Tijs
+ */
 public class Window extends JFrame{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 2325890952970738596L;
 
+	/**
+	 * 
+	 */
 	public Window () {
 		// ’super ’ calls a function inherited from the parent class ( JFrame )
 		super ();

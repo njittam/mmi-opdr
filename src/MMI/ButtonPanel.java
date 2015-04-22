@@ -4,6 +4,10 @@ import handlers.ButtonHandler;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+/**
+ * @author mattijn
+ * @author Tijs
+ */
 public class ButtonPanel extends JPanel {
 	
 		/**
@@ -12,6 +16,12 @@ public class ButtonPanel extends JPanel {
 	private static final long serialVersionUID = -697478526173572538L;
 		public RectPanel rp;
 		JButton b;
+		
+		/**
+		 * @param rp
+		 * @param text
+		 * @param add
+		 */
 		public ButtonPanel (RectPanel rp, String text, constants.functions add) {
 			super ();
 			this.rp = rp;
@@ -19,6 +29,10 @@ public class ButtonPanel extends JPanel {
 			this.add (this.b );
 			this.b.addActionListener ( new ButtonHandler (this,add));
 		}
+		
+		/**
+		 * @param text
+		 */
 		public void setText(String text) {
 			b.setText(text);
 			b.repaint();

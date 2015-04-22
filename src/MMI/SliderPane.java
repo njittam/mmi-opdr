@@ -6,12 +6,20 @@ import java.awt.GridBagConstraints;
 
 import javax.swing.JSlider;
 
+/**
+ * @author mattijn
+ * @author Tijs
+ */
 public class SliderPane extends Container{
 	JSlider sRed;
 	JSlider sGreen;
 	JSlider sBlue;
 	JSlider s4;
 	public Color c;
+	
+	/**
+	 * 
+	 */
 	public SliderPane(){
 		super();
 		this.sRed = new JSlider(0,255,100);

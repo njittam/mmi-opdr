@@ -6,12 +6,19 @@ import java.awt.GridBagLayout;
 import javax.swing.JSlider;
 
 
+/**
+ * @author mattijn
+ * @author Tijs
+ */
 public class ButtonPane extends Container{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 2709054303160292658L;
 
+	/**
+	 * @param rp
+	 */
 	public ButtonPane(RectPanel rp){
 		super();
 		super.setLayout(new GridBagLayout());

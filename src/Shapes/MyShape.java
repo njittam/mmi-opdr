@@ -6,6 +6,10 @@ import java.awt.RenderingHints;
 
 import MMI.RandomColor;
 
+/**
+ * @author Mattijn
+ * @author Tijs
+ */
 public abstract class MyShape {
 	protected int xmin = 0;
 	protected int xmax = 600;

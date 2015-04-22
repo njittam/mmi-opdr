@@ -5,6 +5,10 @@ import handlers.ButtonHandler;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 
+/**
+ * @author mattijn
+ * @author Tijs
+ */
 public class MySlider extends JPanel {
 	/*
 	public RectPanel rp;
