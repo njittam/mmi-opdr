@@ -147,7 +147,6 @@ public class MouseHandler implements MouseListener, MouseMotionListener {
 	 */
 	@Override
 	public void mouseDragged(MouseEvent e) {
-		// TODO Auto-generated method stub
 		int x=(int) e.getX();
 		int y=(int) e.getY();
 		if (m == modes.TOOL){

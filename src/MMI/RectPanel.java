@@ -148,12 +148,33 @@ public class RectPanel extends JPanel {
 	 */
 	private void draw_select(Graphics2D g2d){
 		this.show_selected = new MyRectangle();
+
 		if (selected >= 0 && selected < this.shapesList.size()){
-			show_selected.setValues(this.shapesList.get(selected).getX1() - this.extend_show_selected, 
-									this.shapesList.get(selected).getY1() - this.extend_show_selected, 
-									this.shapesList.get(selected).getX2() + this.extend_show_selected, 
-									this.shapesList.get(selected).getY2() + this.extend_show_selected,
+			MyShape s = this.shapesList.get(selected);
+			if (s.getX1() < s.x2  && s.getY1() < s.y2 || s.getX1() == s.getX2() || s.getY1() == s.getY2())
+			show_selected.setValues(s.getX1() - this.extend_show_selected, 
+									s.getY1() - this.extend_show_selected, 
+									s.getX2() + this.extend_show_selected, 
+									s.getY2() + this.extend_show_selected,
 									selected_color);
+			if (s.getX1() < s.x2  && s.getY1() > s.y2)
+				show_selected.setValues(s.getX1() - this.extend_show_selected, 
+										s.getY1() + this.extend_show_selected, 
+										s.getX2() + this.extend_show_selected, 
+										s.getY2() - this.extend_show_selected,
+										selected_color);
+			if (s.getX1() > s.x2  && s.getY1() < s.y2)
+				show_selected.setValues(s.getX1() + this.extend_show_selected, 
+										s.getY1() - this.extend_show_selected, 
+										s.getX2() - this.extend_show_selected, 
+										s.getY2() + this.extend_show_selected,
+										selected_color);
+			if (s.getX1() > s.x2  && s.getY1() > s.y2)
+				show_selected.setValues(s.getX1() + this.extend_show_selected, 
+										s.getY1() + this.extend_show_selected, 
+										s.getX2() - this.extend_show_selected, 
+										s.getY2() - this.extend_show_selected,
+										selected_color);
 		} else{
 			this.show_selected = null;
 		}
@@ -254,8 +275,8 @@ public class RectPanel extends JPanel {
 		this.setTrashBin(trash_location);
 		this.draw_select(g2d);
 		this.drawTrashBin(g2d);
-		System.out.println("trasbin x1,y1,x2,y2\n");
-		System.out.println(this.trashcan.getX1()+ ',' + this.trashcan.getY1()+ ',' +this.trashcan.getX2()+ ',' +this.trashcan.getY2()+ ',');
+		//System.out.println("trasbin x1,y1,x2,y2\n");
+		System.out.println("("+this.trashcan.getX1()+ "," + this.trashcan.getY1()+ ',' +this.trashcan.getX2()+ ',' +this.trashcan.getY2()+ ')');
 		super.repaint();
 	}
 
