@@ -62,7 +62,7 @@ public class FingerHandler implements FingerListener{
 	 */
 	public  ArrayList<Finger> diff_added(Finger[] old_list, Finger[] new_list){
 		ArrayList<Finger> diff = null;
-		
+		//TODO ADD CODE
 		return diff;
 	}
 	
@@ -71,7 +71,7 @@ public class FingerHandler implements FingerListener{
 	 * @param new_list
 	 * @return
 	 */
-	public  ArrayList<Finger> diff_rem(Finger[] old_list, Finger[] new_list){
+	public  ArrayList<Finger> diff_removed(Finger[] old_list, Finger[] new_list){
 		ArrayList<Finger>  diff = null;
 		//TODO addcode 
 		return diff;

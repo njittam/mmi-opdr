@@ -131,13 +131,15 @@ public class RectPanel extends JPanel {
 	 * @return
 	 */
 	MyShape generateShape(){
-		int r = RandomColor.randInt(0,2);
+		int r = RandomColor.randInt(0,3);
 		if (r ==0 )
 			return new MyRectangle();
 		if ( r==1 )
 			return new MyLine();
 		if ( r==2 )
 			return new MyEllipse();
+		if (r == 3)
+			return new MyPoint(100,100);
 		else return null;
 	}
 	

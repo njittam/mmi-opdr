@@ -6,8 +6,6 @@
 			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="opdr3"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Mattijn/git/mmi-opdr/libs/WiiFingerTracker.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Mattijn/git/mmi-opdr/libs/bluecove-2.1.0.jar"/>
 	<classpathentry kind="lib" path="/home/mattijn/git/mmi-opdr/libs/bluecove-2.1.0.jar"/>
 	<classpathentry kind="lib" path="/home/mattijn/git/mmi-opdr/libs/WiiFingerTracker.jar"/>
 	<classpathentry kind="output" path="bin"/>

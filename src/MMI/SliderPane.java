@@ -11,6 +11,10 @@ import javax.swing.JSlider;
  * @author Tijs
  */
 public class SliderPane extends Container{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	JSlider sRed;
 	JSlider sGreen;
 	JSlider sBlue;

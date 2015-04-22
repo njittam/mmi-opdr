@@ -7,10 +7,6 @@ import javax.swing.SwingUtilities;
  * @author Tijs
  */
 public class Main {
-
-	/**
-	 * @param args
-	 */
 	public static void main(final String[] args) {
 		SwingUtilities.invokeLater (new Runnable () {
 			public void run () {

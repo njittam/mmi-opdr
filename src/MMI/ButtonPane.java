@@ -78,12 +78,12 @@ public class ButtonPane extends Container{
 	    c.gridx = 2;
 	    c.gridy = 2;
 		this.add(rectButton  , c);
-		c.fill = GridBagConstraints.HORIZONTAL;
+		/*c.fill = GridBagConstraints.HORIZONTAL;
 		c.weightx = 0.5;
 	    c.gridx = 0;
 	    c.gridy = 3;
 	    SliderPane sp = new SliderPane();
-		this.add(sp  , c);		
+		this.add(sp  , c);		*/
 		
 	}
 }
