@@ -7,6 +7,7 @@ import java.awt.Color;
  * @author Tijs
  */
 public class constants {
+	public enum Directions {NORTH,EAST,SOUTH,WEST}; 
 	public enum SHAPE {NONE,LINE,RECT,ELLIPSE};
 	public enum functions { TOOL, RANDOMCOLOR , ADD, MOD, ELLIPSE ,LINE , RECTANGLE, MODE ,DELETE };
 	public enum  modes {TOOL , MODE, DELETE, COLOR};

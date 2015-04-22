@@ -106,4 +106,13 @@ public abstract class MyShape {
 	}
 
 	public abstract boolean contains(int x, int y);
+	public Color getColor() {
+		// TODO Auto-generated method stub
+		return this.c;
+	}
+	public void setValues(int x12, int y12, int x22, int y22, Color color) {
+		this.setCoords(x12, y12, x22, y22);
+		this.setColor(color);
+		
+	}
 }

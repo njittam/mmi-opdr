@@ -44,6 +44,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener {
 		int x=(int) e.getX();
 		int y=(int) e.getY();
 		System.out.println("("+x+", "+y+")");
+		System.out.println("trasbin x1,y1,x2,y2\n");
 		if (m == constants.modes.TOOL){
 			if (s == SHAPE.LINE)
 				ms = new MyLine(x,y);
@@ -76,6 +77,8 @@ public class MouseHandler implements MouseListener, MouseMotionListener {
 				}
 			}
 		}
+		this.rp.select_object(x, y);
+		rp.repaint();
 	}
 
 	/* (non-Javadoc)
@@ -135,6 +138,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener {
 		if (m == modes.MODE){
 			index = -1;
 		}
+		rp.delete_selected_object();
 		
 	}
 
