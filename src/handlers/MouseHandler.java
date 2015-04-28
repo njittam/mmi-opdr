@@ -56,8 +56,10 @@ public class MouseHandler implements MouseListener, MouseMotionListener {
 				rp.addToList(ms);
 			rp.repaint();
 		}
-		if (m == modes.COLOR){
-			for(int i = rp.shapesList.size()-1; i >= 0; i--){
+		else if (m == modes.COLOR){
+			rp.change_color_of_selected((new RandomColor().toColor()));
+			rp.repaint();
+			/*for(int i = rp.shapesList.size()-1; i >= 0; i--){
 				if (((MyShape) rp.shapesList.get(i)).contains(x,y)){
 					MyShape s = rp.shapesList.get(i);
 					rp.shapesList.remove(i);
@@ -66,9 +68,9 @@ public class MouseHandler implements MouseListener, MouseMotionListener {
 					rp.repaint();
 					i = -1;
 				}
-			}
+			}*/
 		}
-		if (m == constants.modes.DELETE){
+		else if (m == constants.modes.DELETE){
 			for(int i = rp.shapesList.size()-1; i >= 0; i--){
 				if (((MyShape) rp.shapesList.get(i)).contains(x,y)){
 					rp.shapesList.remove(i);
@@ -76,8 +78,8 @@ public class MouseHandler implements MouseListener, MouseMotionListener {
 					i = -1;
 				}
 			}
-		}
-		this.rp.select_object(x, y);
+		}else
+			this.rp.select_object(x, y);
 		rp.repaint();
 	}
 

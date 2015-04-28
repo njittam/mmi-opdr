@@ -21,6 +21,10 @@ import Shapes.MyShape;
  * @author Mattijn
  * @author Tijs
  */
+/**
+ * @author mkreuzen
+ *
+ */
 public class RectPanel extends JPanel {
 	/**
 	 * 
@@ -43,9 +47,13 @@ public class RectPanel extends JPanel {
 	private Color selected_color = Color.RED;
 	
 	//const values over trasbin
-	private Directions trash_location = Directions.SOUTH;
+	private Directions trash_location = Directions.EAST;
 	private double trashcan_size  = 0.1; //value between 0.0 and 1.0
-	private Color trashcan_color = Color.BLUE; 
+	private Color trashcan_color = Color.BLUE;
+	
+	//const values over scroll
+	private int color_big_scroll = 1000;
+	private int color_small_scroll = 10;
 	
 	
 	/**
@@ -62,6 +70,7 @@ public class RectPanel extends JPanel {
 		}
 		this.repaint();
 	}
+	
 	/**
 	 * @param c
 	 */
@@ -88,6 +97,30 @@ public class RectPanel extends JPanel {
 		}
 		this.repaint();
 	}
+
+	/**
+	 * @param d
+	 * @param c
+	 * @return
+	 */
+	public Color scroll_through_colors(Directions d, Color c){
+		int ci = c.getRGB();
+		switch (d){
+		case NORTH:
+			ci += this.color_big_scroll;
+			break;
+		case SOUTH:
+			ci -= this.color_big_scroll;
+			break;
+		case EAST:
+			ci += this.color_small_scroll;
+			break;
+		case WEST:
+			ci += this.color_small_scroll;
+			break;
+		}
+		return new Color(Math.abs(ci % 8388608));
+	}
 	
 	/**
 	 * @param x
@@ -103,19 +136,36 @@ public class RectPanel extends JPanel {
 	}
 	
 	/**
-	 * 
+	 * @param d
 	 */
 	public void setTrashBin(Directions d){
 		this.trashcan = new MyRectangle();
-		if (d != constants.Directions.SOUTH){
-			System.out.println("nope we hadden afgesproken om het south te doen");
-			d = constants.Directions.SOUTH;
-		}
-		if (d == constants.Directions.SOUTH||true){
+		switch (d){
+		case SOUTH:
 			this.trashcan.setX1(0);
 			this.trashcan.setX2(this.getWidth());
 			this.trashcan.setY2(this.getHeight());
 			this.trashcan.setY1(this.getHeight() - (int) (this.getHeight() * this.trashcan_size));
+			break;
+		case NORTH:
+			this.trashcan.setX1(0);
+			this.trashcan.setY1(0);
+			this.trashcan.setX2(this.getWidth());
+			this.trashcan.setY2((int) (this.getHeight() * this.trashcan_size));
+			break;
+		case EAST:
+			this.trashcan.setX1(this.getWidth() - (int)(this.getWidth() * this.trashcan_size));
+			this.trashcan.setY1(0);
+			this.trashcan.setX2(this.getWidth());
+			this.trashcan.setY2(this.getHeight());
+			break;
+		case WEST:
+			this.trashcan.setX1(0);
+			this.trashcan.setY1(0);
+			this.trashcan.setX2((int) (this.getWidth() * this.trashcan_size));
+			this.trashcan.setY2(this.getHeight());
+			break;
+			
 		}
 		this.trashcan.setColor(this.trashcan_color);
 	}
@@ -130,9 +180,15 @@ public class RectPanel extends JPanel {
 			this.trashcan.draw(g2d);
 		}
 	}
+	
+	/**
+	 * @param s
+	 * @return
+	 */
 	public boolean inTrash(MyShape s){
 		return this.trashcan.contains(s.getX1(), s.getY1()) && this.trashcan.contains(s.getX2(), s.getY2());
 	}
+
 	/**
 	 * 
 	 */
@@ -220,7 +276,6 @@ public class RectPanel extends JPanel {
 		}
 		this.repaint();
 	}
-
 
 	/**
 	 * 
@@ -368,5 +423,4 @@ public class RectPanel extends JPanel {
 		// TODO Auto-generated method stub
 		mh.m = modes.DELETE;
 	}
-
 }
