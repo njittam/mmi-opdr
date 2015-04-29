@@ -12,7 +12,7 @@ public class MyPoint extends MyShape {
 
 	public int x;
 	public int y;
-	
+	private String objectname = "Mypoint";
 	/**
 	 * creates an MyPoint object
 	 * 
@@ -56,6 +56,14 @@ public class MyPoint extends MyShape {
 	 */
 	public boolean equals(MyPoint myPoint) {
 		return this.x == myPoint.x && this.y == myPoint.y;
+	}
+
+	/* (non-Javadoc)
+	 * @see Shapes.MyShape#getoObjectName()
+	 */
+	@Override
+	public String getObjectName() {
+		return this.objectname;
 	}
 
 }

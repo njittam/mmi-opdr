@@ -14,6 +14,7 @@ public class MyLine extends MyShape{
 	/**
 	 * 
 	 */
+	private String objectname = "MyRectangle";
 	public MyLine() {
 		int xmin = super.xmin;
 		int xmax = super.xmax;
@@ -107,5 +108,13 @@ public class MyLine extends MyShape{
 	public boolean contains(int x, int y) {
 		Line2D.Double line = new Line2D.Double(x1, y1, x2,y2);
 		return line.intersects(x-4, y-4, 8, 8);
+	}
+
+	/* (non-Javadoc)
+	 * @see Shapes.MyShape#getObjectName()
+	 */
+	@Override
+	public String getObjectName() {
+		return this.objectname;
 	}
 }

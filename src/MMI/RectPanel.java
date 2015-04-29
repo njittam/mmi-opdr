@@ -54,7 +54,7 @@ public class RectPanel extends JPanel {
 	//const values over scroll
 	private int color_big_scroll = 1000;
 	private int color_small_scroll = 10;
-	
+	private MyShape[] shapelist_scroll = {new MyLine(), new MyEllipse(), new MyRectangle()};
 	
 	/**
 	 * @param x1
@@ -122,6 +122,16 @@ public class RectPanel extends JPanel {
 		return new Color(Math.abs(ci % 8388608));
 	}
 	
+	/**
+	 * @param d
+	 * @param c
+	 * @return
+	 */
+	public MyShape scroll_through_shapes(Directions d, MyShape s){
+		
+		return s;
+		
+	}
 	/**
 	 * @param x
 	 * @param y

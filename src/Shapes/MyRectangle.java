@@ -13,6 +13,7 @@ public class MyRectangle extends MyShape {
 	/**
 	 * 
 	 */
+	private String objectname = "MyRectangle";
 	public MyRectangle() {
 		int xmin = super.xmin;
 		int xmax = super.xmax;
@@ -86,6 +87,14 @@ public class MyRectangle extends MyShape {
 	public boolean contains(int x, int y) {
 		Rectangle2D.Double rect = new Rectangle2D.Double(startx, starty, width, height);
 		return rect.intersects(x-1, y-1, 1, 1);
+	}
+
+	/* (non-Javadoc)
+	 * @see Shapes.MyShape#getoObjectName()
+	 */
+	@Override
+	public String getObjectName() {
+		return this.objectname;
 	}
 
 }

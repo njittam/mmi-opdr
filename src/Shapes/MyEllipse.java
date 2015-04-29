@@ -11,6 +11,8 @@ import MMI.RandomColor;
  */
 public class MyEllipse extends MyShape {
 
+	private String objectname = "MyRectangle";
+	
 	/**
 	 * 
 	 */
@@ -91,5 +93,11 @@ public class MyEllipse extends MyShape {
 	public boolean contains(int x, int y) {
 		Ellipse2D.Double ellip = new Ellipse2D.Double(startx, starty, width,height);
 		return ellip.intersects(x, y, 1, 1);
+	}
+
+	@Override
+	public String getObjectName() {
+		// TODO Auto-generated method stub
+		return this.objectname;
 	}
 }
