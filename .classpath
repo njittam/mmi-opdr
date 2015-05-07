@@ -6,7 +6,10 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
-	<classpathentry kind="lib" path="U:/git/mmi-opdr5/libs/bluecove-2.1.0.jar"/>
-	<classpathentry kind="lib" path="U:/git/mmi-opdr5/libs/WiiFingerTracker.jar"/>
+	<classpathentry kind="lib" path="/home/mattijn/git/mmi-opdr/libs/WiiFingerTracker.jar"/>
+	<classpathentry kind="lib" path="/home/mattijn/Downloads/slf4j-1.7.12/slf4j-api-1.7.12.jar"/>
+	<classpathentry kind="lib" path="/home/mattijn/Downloads/bluecove-2.1.1-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="/home/mattijn/Downloads/bluecove-emu-2.1.1-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="/home/mattijn/Downloads/bluecove-gpl-2.1.1-SNAPSHOT.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

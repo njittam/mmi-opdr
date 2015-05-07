@@ -81,7 +81,7 @@ public class FingerHandler implements FingerListener{
 	 * @param e
 	 */
 	public void finger_added(FingerEvent e){
-		
+		rp.add_point(10, 10);
 	}
 	
 	/**

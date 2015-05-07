@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
+import motej.Mote;
 import MMI.constants.Directions;
 import MMI.constants.SHAPE;
 import MMI.constants.modes;
@@ -48,7 +49,7 @@ public class RectPanel extends JPanel {
 	
 	//const values over trasbin
 	private Directions trash_location = Directions.EAST;
-	private double trashcan_size  = 0.1; //value between 0.0 and 1.0
+	private double trashcan_size  = 0.2; //value between 0.0 and 1.0
 	private Color trashcan_color = Color.BLUE;
 	
 	//const values over scroll
@@ -128,9 +129,33 @@ public class RectPanel extends JPanel {
 	 * @return
 	 */
 	public MyShape scroll_through_shapes(Directions d, MyShape s){
-		
-		return s;
-		
+		int i = -1;
+		boolean found = false;
+		while (i < this.shapelist_scroll.length || found){
+			i++;
+			if (this.shapelist_scroll[i].getObjectName()  == s.getObjectName()){
+				found = true;
+			}
+		}
+		if  (i == this.shapelist_scroll.length || !found) 
+			return s;
+		else{
+			switch (d){
+			case WEST:
+				i++;
+				break;
+			case EAST:
+				i--;
+				break;
+			case NORTH:
+				break;
+			case SOUTH:
+				break;
+			default:
+				break;
+			}
+			return this.shapelist_scroll[Math.abs(i % this.shapelist_scroll.length)];
+		}
 	}
 	/**
 	 * @param x
@@ -288,9 +313,10 @@ public class RectPanel extends JPanel {
 	}
 
 	/**
+	 * @param mote 
 	 * 
 	 */
-	public RectPanel(){
+	public RectPanel(Mote mote){
 		super ();
 		this.color = new RandomColor() ;
 		this.addMouseListener(mh);
