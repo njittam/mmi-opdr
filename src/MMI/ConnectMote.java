@@ -5,9 +5,10 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
-import motej.Mote;
-import motej.MoteFinder;
-import motej.MoteFinderListener;
+import wiiusej.WiiUseApiManager;
+import wiiusej.Wiimote;
+
+
 
 
 
@@ -24,32 +25,25 @@ public class ConnectMote extends JFrame {
 		super.setSize ( new Dimension (840 , 350));
 		super . setLocationRelativeTo ( null );
 		// Determines what should happen when the frame is closed
-		super . setDefaultCloseOperation (EXIT_ON_CLOSE);
-		MoteFinderListener listener = new MoteFinderListener() {
-            
-            public void moteFound(final Mote mote) {
-                    System.out.println("Found mote: " + mote.getBluetoothAddress());
-                    mote.rumble(2000l);
-                    SwingUtilities.invokeLater (new Runnable () {
-            			public void run () {
-            				new Window (mote);
-            			}
-            		});
-            }
-            
-		};   
-		MoteFinder finder = MoteFinder.getMoteFinder();
-		finder.addMoteFinderListener(listener);
+		super.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		int nMotes = 0;
+		Wiimote mote;
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		super.setVisible ( true );
-		finder.startDiscovery();
-		try {
-			Thread.sleep(30000l);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		while (nMotes == 0){
+			Wiimote[] motes = WiiUseApiManager.getWiimotes(1, true);
+			nMotes = motes.length;
+			if (nMotes != 0)
+			{
+				mote = motes[0];
+			}
 		}
-		finder.stopDiscovery();
-		super.setTitle ("stopped searching for Motes");
-		super.setVisible ( true );
+		super.setDefaultCloseOperation(HIDE_ON_CLOSE);
+		SwingUtilities.invokeLater (new Runnable (){
+					public void run (){
+						Wiimote[] motes = WiiUseApiManager.getWiimotes(1, true);
+						new Window(motes [0]);
+					}
+			});
 	}
 }

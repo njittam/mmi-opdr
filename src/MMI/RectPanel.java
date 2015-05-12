@@ -1,5 +1,6 @@
 package MMI;
 import handlers.MouseHandler;
+import handlers.MyListener;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -8,7 +9,7 @@ import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
-import motej.Mote;
+import wiiusej.Wiimote;
 import MMI.constants.Directions;
 import MMI.constants.SHAPE;
 import MMI.constants.modes;
@@ -56,6 +57,19 @@ public class RectPanel extends JPanel {
 	private int color_big_scroll = 1000;
 	private int color_small_scroll = 10;
 	private MyShape[] shapelist_scroll = {new MyLine(), new MyEllipse(), new MyRectangle()};
+	
+	/**
+	 * @param mote 
+	 * 
+	 */
+	public RectPanel(Wiimote mote){
+		super ();
+		this.color = new RandomColor() ;
+		this.addMouseListener(mh);
+		this.addMouseMotionListener(mh);
+		this.setTrashBin(trash_location);
+		mote.addWiiMoteEventListeners(new MyListener(this));
+	}
 	
 	/**
 	 * @param x1
@@ -312,17 +326,7 @@ public class RectPanel extends JPanel {
 		this.repaint();
 	}
 
-	/**
-	 * @param mote 
-	 * 
-	 */
-	public RectPanel(Mote mote){
-		super ();
-		this.color = new RandomColor() ;
-		this.addMouseListener(mh);
-		this.addMouseMotionListener(mh);
-		this.setTrashBin(trash_location);
-	}
+
 
 	/**
 	 * @param s
