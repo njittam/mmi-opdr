@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry exported="true" kind="lib" path="U:/git/mmi-opdr22/libs/wiiusej 0.12b/wiiusej.jar" sourcepath="U:/git/mmi-opdr22/libs/WiiuseJ 0.12b src.zip"/>
+	<classpathentry kind="lib" path="/home/mattijn/git/mmi-opdr/libs/WiiuseJ 0.12b src.zip" sourcepath="U:/git/mmi-opdr22/libs/WiiuseJ 0.12b src.zip"/>
+	<classpathentry kind="lib" path="/home/mattijn/git/mmi-opdr/libs/wiiusej 0.12b/wiiusej.jar" sourcepath="libs/WiiuseJ 0.12b src.zip"/>
 	<classpathentry kind="src" path="src">
 		<attributes>
 			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="opdr3"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

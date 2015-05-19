@@ -18,6 +18,7 @@ import Shapes.MyLine;
 import Shapes.MyPoint;
 import Shapes.MyRectangle;
 import Shapes.MyShape;
+import Shapes.MyText;
 
 /**
  * @author Mattijn
@@ -69,6 +70,14 @@ public class RectPanel extends JPanel {
 		this.addMouseMotionListener(mh);
 		this.setTrashBin(trash_location);
 		mote.addWiiMoteEventListeners(new MyListener(this));
+	}
+	public RectPanel(){
+		super ();
+		this.color = new RandomColor() ;
+		this.addMouseListener(mh);
+		this.addMouseMotionListener(mh);
+		this.setTrashBin(trash_location);
+		this.shapesList.add(new MyText());
 	}
 	
 	/**

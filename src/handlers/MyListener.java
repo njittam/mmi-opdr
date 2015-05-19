@@ -44,7 +44,6 @@ public class MyListener implements WiimoteListener{
 	@Override
 	public void onIrEvent(IREvent e) {
 		
-		
 	}
 
 	@Override
