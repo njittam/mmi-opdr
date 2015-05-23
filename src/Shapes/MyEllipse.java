@@ -41,20 +41,6 @@ public class MyEllipse extends MyShape {
 	public MyEllipse(int x1, int y1, int x2, int y2) {
 		super(x1, y1, x2, y2);
 	}
-	
-	/**
-	 * @param x1
-	 * @param y1
-	 * @param x2
-	 * @param y2
-	 * @param width
-	 * @param heigth
-	 * @param startx
-	 * @param starty
-	 */
-	public MyEllipse(int x1, int y1, int x2, int y2,int width,int heigth, int startx, int starty) {
-		super(x1, y1, x2, y2,width,heigth,startx,starty);
-	}
 
 	/**
 	 * @param x
@@ -99,5 +85,11 @@ public class MyEllipse extends MyShape {
 	public String getObjectName() {
 		// TODO Auto-generated method stub
 		return this.objectname;
+	}
+
+	@Override
+	public void oncreate() {
+		// TODO Auto-generated method stub
+		
 	}
 }

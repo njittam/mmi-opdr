@@ -66,4 +66,10 @@ public class MyPoint extends MyShape {
 		return this.objectname;
 	}
 
+	@Override
+	public void oncreate() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

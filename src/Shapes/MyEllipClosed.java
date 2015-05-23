@@ -14,4 +14,10 @@ public class MyEllipClosed extends MyShape {
 		return null;
 	}
 
+	@Override
+	public void oncreate() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
