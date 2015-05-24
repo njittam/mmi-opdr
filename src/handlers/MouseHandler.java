@@ -43,8 +43,8 @@ public class MouseHandler implements MouseListener, MouseMotionListener {
 	public void mouseClicked(MouseEvent e) {
 		int x=(int) e.getX();
 		int y=(int) e.getY();
-		System.out.println("("+x+", "+y+")");
-		System.out.println("trasbin x1,y1,x2,y2\n");
+		//System.out.println("("+x+", "+y+")");
+		//System.out.println("trasbin x1,y1,x2,y2\n");
 		if (m == constants.modes.TOOL){
 			if (s == SHAPE.LINE)
 				ms = new MyLine(x,y);
@@ -152,12 +152,14 @@ public class MouseHandler implements MouseListener, MouseMotionListener {
 		int x=(int) e.getX();
 		int y=(int) e.getY();
 		if (m == modes.TOOL){
-			ms = rp.shapesList.get(rp.shapesList.size() -1);
-			ms.x2 = x;
-			ms.y2 = y;
-			rp.shapesList.remove(rp.shapesList.size() -1);
-			rp.shapesList.add(ms);
-			rp.repaint();
+			MyShape s = rp.getSelected();
+			rp.resize_selected(s.getX1(), s.getY1(), x, y);
+//			ms = rp.shapesList.get(rp.shapesList.size() -1);
+//			ms.x2 = x;
+//			ms.y2 = y;
+//			rp.shapesList.remove(rp.shapesList.size() -1);
+//			rp.shapesList.add(ms);
+//			rp.repaint();
 		}
 		if (m == modes.MODE){
 			int dy= old_y  - e.getY();

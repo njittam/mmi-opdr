@@ -63,10 +63,7 @@ public abstract class MyShape {
 		this.y1 = y1;
 		this.y2 = y2;
 
-		this.width  = Math.abs(this.x1 - this.x2);
-		this.height = Math.abs(this.y1 - this.y2);
-		this.startx = Math.min(this.x1, this.x2);
-		this.starty = Math.min(this.y1, this.y2);
+		update();
 		this.c = c;
 	}
 	public void update(){
@@ -74,6 +71,7 @@ public abstract class MyShape {
 		height = Math.abs(this.y1 - this.y2);
 		startx = Math.min(this.x1, this.x2);
 		starty = Math.min(this.y1, this.y2);
+	
 	}
 
 	/**
@@ -81,10 +79,7 @@ public abstract class MyShape {
 	 */
 	public void draw(Graphics2D g) {
 		g.setPaint(c);
-		width  = Math.abs(this.x1 - this.x2);
-		height = Math.abs(this.y1 - this.y2);
-		startx = Math.min(this.x1, this.x2);
-		starty = Math.min(this.y1, this.y2);
+		update();
 		g.setStroke(new BasicStroke(3));
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
 				RenderingHints.VALUE_ANTIALIAS_ON);
@@ -101,10 +96,7 @@ public abstract class MyShape {
 		this.y1 = y1;
 		this.x2 = x2;
 		this.y2 = y2;
-		this.width  = Math.abs(this.x1 - this.x2);
-		this.height = Math.abs(this.y1 - this.y2);
-		this.startx = Math.min(this.x1, this.x2);
-		this.starty = Math.min(this.y1, this.y2);
+		this.update();
 	}
 
 	/**
@@ -119,10 +111,7 @@ public abstract class MyShape {
 	 */
 	public void setX1(int x1) {
 		this.x1 = x1;
-		this.width  = Math.abs(this.x1 - this.x2);
-		this.height = Math.abs(this.y1 - this.y2);
-		this.startx = Math.min(this.x1, this.x2);
-		this.starty = Math.min(this.y1, this.y2);
+		update();
 	}
 	
 
@@ -138,10 +127,7 @@ public abstract class MyShape {
 	 */
 	public void setY1(int y1) {
 		this.y1 = y1;
-		this.width  = Math.abs(this.x1 - this.x2);
-		this.height = Math.abs(this.y1 - this.y2);
-		this.startx = Math.min(this.x1, this.x2);
-		this.starty = Math.min(this.y1, this.y2);
+		update();
 	}
 
 	/**
@@ -156,10 +142,7 @@ public abstract class MyShape {
 	 */
 	public void setX2(int x2) {
 		this.x2 = x2;
-		this.width  = Math.abs(this.x1 - this.x2);
-		this.height = Math.abs(this.y1 - this.y2);
-		this.startx = Math.min(this.x1, this.x2);
-		this.starty = Math.min(this.y1, this.y2);
+update();
 	}
 
 	/**
@@ -174,10 +157,7 @@ public abstract class MyShape {
 	 */
 	public void setY2(int y2) {
 		this.y2 = y2;
-		this.width  = Math.abs(this.x1 - this.x2);
-		this.height = Math.abs(this.y1 - this.y2);
-		this.startx = Math.min(this.x1, this.x2);
-		this.starty = Math.min(this.y1, this.y2);
+		update();
 	}
 
 	/**

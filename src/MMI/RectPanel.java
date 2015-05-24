@@ -5,6 +5,7 @@ import handlers.MyListener;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
 import javax.swing.JPanel;
@@ -14,6 +15,7 @@ import MMI.constants.Directions;
 import MMI.constants.SHAPE;
 import MMI.constants.modes;
 import Shapes.MyEllipse;
+import Shapes.MyImage;
 import Shapes.MyLine;
 import Shapes.MyPoint;
 import Shapes.MyRectangle;
@@ -28,37 +30,51 @@ import Shapes.MyText;
  * @author mkreuzen
  *
  */
+/**
+ * @author mattijn
+ *
+ */
 public class RectPanel extends JPanel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -8421133344664044138L;
+	private static final long serialVersionUID = -3983917049855075714L;
+	/**
+	 * 
+	 */
+	
 	public ArrayList<MyShape> shapesList = new ArrayList<MyShape>();
 	public ArrayList<MyPoint> pointList = new ArrayList<MyPoint>();
 	private int modn = 1;
 	public RandomColor color ;
-	
+
 	constants.SHAPE shape = constants.SHAPE.NONE;
 	MouseHandler mh = new MouseHandler(constants.SHAPE.NONE,this);
-	
+
 	private int selected = 2;
 	private MyShape show_selected = null;
 	private MyRectangle trashcan = null;
-	
+
 	//const values over de selecteerbox
 	private int extend_show_selected = 10;
 	private Color selected_color = Color.RED;
-	
+
 	//const values over trasbin
-	private Directions trash_location = Directions.EAST;
+	private Directions trash_location = Directions.SOUTH;
 	private double trashcan_size  = 0.2; //value between 0.0 and 1.0
 	private Color trashcan_color = Color.BLUE;
-	
+
 	//const values over scroll
 	private int color_big_scroll = 1000;
 	private int color_small_scroll = 10;
-	private MyShape[] shapelist_scroll = {new MyLine(), new MyEllipse(), new MyRectangle()};
-	
+	private MyShape[] shapelist_scroll = {
+			new MyText(),
+			new MyImage(),
+			new MyLine(), 
+			new MyEllipse(), 
+			new MyRectangle(),
+			null};
+
 	/**
 	 * @param mote 
 	 * 
@@ -79,7 +95,7 @@ public class RectPanel extends JPanel {
 		this.setTrashBin(trash_location);
 		this.shapesList.add(new MyText());
 	}
-	
+
 	/**
 	 * @param x1
 	 * @param y1
@@ -94,7 +110,7 @@ public class RectPanel extends JPanel {
 		}
 		this.repaint();
 	}
-	
+
 	/**
 	 * @param c
 	 */
@@ -106,7 +122,7 @@ public class RectPanel extends JPanel {
 		}
 		this.repaint();
 	}
-	
+
 	/**
 	 * @param new_shape
 	 */
@@ -145,7 +161,7 @@ public class RectPanel extends JPanel {
 		}
 		return new Color(Math.abs(ci % 8388608));
 	}
-	
+
 	/**
 	 * @param d
 	 * @param c
@@ -192,7 +208,7 @@ public class RectPanel extends JPanel {
 			this.repaint();
 		}
 	}
-	
+
 	/**
 	 * @param d
 	 */
@@ -223,22 +239,22 @@ public class RectPanel extends JPanel {
 			this.trashcan.setX2((int) (this.getWidth() * this.trashcan_size));
 			this.trashcan.setY2(this.getHeight());
 			break;
-			
+
 		}
 		this.trashcan.setColor(this.trashcan_color);
 	}
-	
+
 	/**
 	 * @param g
 	 */
 	public void drawTrashBin(Graphics2D g2d){
 		this.setTrashBin(this.trash_location);
 		if (this.trashcan != null){
-			
+
 			this.trashcan.draw(g2d);
 		}
 	}
-	
+
 	/**
 	 * @param s
 	 * @return
@@ -256,7 +272,7 @@ public class RectPanel extends JPanel {
 			selected = -1;
 		}
 	}
-	
+
 	/**
 	 * @param g
 	 */
@@ -266,29 +282,29 @@ public class RectPanel extends JPanel {
 		if (selected >= 0 && selected < this.shapesList.size()){
 			MyShape s = this.shapesList.get(selected);
 			if (s.getX1() < s.x2  && s.getY1() < s.y2 || s.getX1() == s.getX2() || s.getY1() == s.getY2())
-			show_selected.setValues(s.getX1() - this.extend_show_selected, 
-									s.getY1() - this.extend_show_selected, 
-									s.getX2() + this.extend_show_selected, 
-									s.getY2() + this.extend_show_selected,
-									selected_color);
+				show_selected.setValues(s.getX1() - this.extend_show_selected, 
+						s.getY1() - this.extend_show_selected, 
+						s.getX2() + this.extend_show_selected, 
+						s.getY2() + this.extend_show_selected,
+						selected_color);
 			if (s.getX1() < s.x2  && s.getY1() > s.y2)
 				show_selected.setValues(s.getX1() - this.extend_show_selected, 
-										s.getY1() + this.extend_show_selected, 
-										s.getX2() + this.extend_show_selected, 
-										s.getY2() - this.extend_show_selected,
-										selected_color);
+						s.getY1() + this.extend_show_selected, 
+						s.getX2() + this.extend_show_selected, 
+						s.getY2() - this.extend_show_selected,
+						selected_color);
 			if (s.getX1() > s.x2  && s.getY1() < s.y2)
 				show_selected.setValues(s.getX1() + this.extend_show_selected, 
-										s.getY1() - this.extend_show_selected, 
-										s.getX2() - this.extend_show_selected, 
-										s.getY2() + this.extend_show_selected,
-										selected_color);
+						s.getY1() - this.extend_show_selected, 
+						s.getX2() - this.extend_show_selected, 
+						s.getY2() + this.extend_show_selected,
+						selected_color);
 			if (s.getX1() > s.x2  && s.getY1() > s.y2)
 				show_selected.setValues(s.getX1() + this.extend_show_selected, 
-										s.getY1() + this.extend_show_selected, 
-										s.getX2() - this.extend_show_selected, 
-										s.getY2() - this.extend_show_selected,
-										selected_color);
+						s.getY1() + this.extend_show_selected, 
+						s.getX2() - this.extend_show_selected, 
+						s.getY2() - this.extend_show_selected,
+						selected_color);
 		} else{
 			this.show_selected = null;
 		}
@@ -296,7 +312,7 @@ public class RectPanel extends JPanel {
 			this.show_selected.draw(g2d);
 		}
 	}
-	
+
 	/**
 	 * @param x
 	 * @param y
@@ -362,7 +378,7 @@ public class RectPanel extends JPanel {
 			modn = 1;
 		super.repaint();
 	}
-  
+
 	/* (non-Javadoc)
 	 * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
 	 */
@@ -380,7 +396,7 @@ public class RectPanel extends JPanel {
 		this.draw_select(g2d);
 		this.drawTrashBin(g2d);
 		//System.out.println("trasbin x1,y1,x2,y2\n");
-		System.out.println("("+this.trashcan.getX1()+ "," + this.trashcan.getY1()+ ',' +this.trashcan.getX2()+ ',' +this.trashcan.getY2()+ ')');
+		//System.out.println("("+this.trashcan.getX1()+ "," + this.trashcan.getY1()+ ',' +this.trashcan.getX2()+ ',' +this.trashcan.getY2()+ ')');
 		super.repaint();
 	}
 
@@ -395,27 +411,57 @@ public class RectPanel extends JPanel {
 	 * @return
 	 */
 	MyShape generateShape(){
-		int r = RandomColor.randInt(0,3);
-		if (r ==0 )
-			return new MyRectangle();
-		if ( r==1 )
-			return new MyLine();
-		if ( r==2 )
-			return new MyEllipse();
-		if (r == 3)
-			return new MyPoint(100,100);
-		else return null;
+		int r = RandomColor.randInt(0,this.shapelist_scroll.length - 1);
+		MyShape s = this.shapelist_scroll[r];
+		if (true){
+			Class<?> c = s.getClass();
+			try {
+				return (MyShape) c.getConstructor().newInstance();
+			} catch (NoSuchMethodException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return null;
+			} catch (SecurityException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return null;
+			} catch (InstantiationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return null;
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IllegalArgumentException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return null;
+			} catch (InvocationTargetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return null;
+			}
+		}
+		return null;
 	}
 
+	/**
+	 * @param s
+	 */
+	public void add_shape(MyShape s){
+		this.shapesList.add(s);
+		s.oncreate();
+		this.paint(getGraphics());
+		super.repaint();
+	}
 	/**
 	 * 
 	 */
 	public void addRandomShape(){
-		MyShape r = generateShape();
+		MyShape s = generateShape();
 		modn = 1;
-		this.shapesList.add(r);
-		this.paint(getGraphics());
-		super.repaint();
+		this.add_shape(s);
+
 	}
 
 	/**
@@ -471,5 +517,9 @@ public class RectPanel extends JPanel {
 	public void delete() {
 		// TODO Auto-generated method stub
 		mh.m = modes.DELETE;
+	}
+	public MyShape getSelected() {
+		// TODO Auto-generated method stub
+		return this.shapesList.get(this.selected);
 	}
 }

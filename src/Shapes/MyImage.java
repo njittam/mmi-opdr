@@ -2,7 +2,10 @@ package Shapes;
 
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.image.ImageObserver;
+
+import javax.swing.JOptionPane;
 
 public class MyImage extends MyShape {
 	private final String objectname = "MyImage";
@@ -29,7 +32,7 @@ public class MyImage extends MyShape {
 	
 	@Override
 	public boolean contains(int x, int y) {
-		return x>= this.x1 && x <= this.x2 && y <= this.y2 && y >= this.y1;
+		return x>= Math.min(this.x1,this.x2) && x <= Math.max(this.x1,this.x2) && y >= Math.min(this.y1,this.y2) && y <= Math.max(this.y1,this.y2);
 	}
 
 	@Override
@@ -39,8 +42,9 @@ public class MyImage extends MyShape {
 
 	@Override
 	public void oncreate() {
-		// TODO Auto-generated method stub
-		
+		String name = JOptionPane.showInputDialog("What is the file name?");
+        System.out.println( "Hello " + name + '!');
+		img =  Toolkit.getDefaultToolkit().getImage(name);
 	}
 
 }
