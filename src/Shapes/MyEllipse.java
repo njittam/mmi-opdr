@@ -11,7 +11,7 @@ import MMI.RandomColor;
  */
 public class MyEllipse extends MyShape {
 
-	private String objectname = "MyRectangle";
+	private String objectname = "MyEllipse";
 	
 	/**
 	 * 

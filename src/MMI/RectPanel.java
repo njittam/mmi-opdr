@@ -17,10 +17,12 @@ import MMI.constants.SHAPE;
 import MMI.constants.modes;
 import MMI.constants.sliders;
 import Shapes.MyEllipse;
+import Shapes.MyEllipseFilled;
 import Shapes.MyImage;
 import Shapes.MyLine;
 import Shapes.MyPoint;
 import Shapes.MyRectangle;
+import Shapes.MyRectangleFilled;
 import Shapes.MyShape;
 import Shapes.MyText;
 
@@ -73,8 +75,10 @@ public class RectPanel extends JPanel {
 			new MyText(),
 			new MyImage(),
 			new MyLine(), 
-			new MyEllipse(), 
-			new MyRectangle()};
+			new MyEllipse(),
+			new MyEllipseFilled(),
+			new MyRectangle(),
+			new MyRectangleFilled()};
 			//null};
 	// slider data
 	private int colorSlider = 0;
