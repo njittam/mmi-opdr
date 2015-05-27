@@ -93,7 +93,7 @@ public class MyLine extends MyShape{
 	@Override
 	public boolean contains(int x, int y) {
 		Line2D.Double line = new Line2D.Double(x1, y1, x2,y2);
-		return line.intersects(x-4, y-4, 8, 8);
+		return line.intersects(x-(this.line/2), y-(this.line/2), this.line, this.line);
 	}
 
 	/* (non-Javadoc)

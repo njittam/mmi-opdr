@@ -77,8 +77,8 @@ public class MyEllipse extends MyShape {
 	 */
 	@Override
 	public boolean contains(int x, int y) {
-		Ellipse2D.Double ellip = new Ellipse2D.Double(startx, starty, width,height);
-		return ellip.intersects(x, y, 1, 1);
+		Ellipse2D.Double ellipse = new Ellipse2D.Double(startx, starty, width,height);
+		return ellipse.intersects(x-(this.line/2), y-(this.line/2), this.line, this.line);
 	}
 
 	@Override

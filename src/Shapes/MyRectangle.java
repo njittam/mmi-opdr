@@ -73,7 +73,7 @@ public class MyRectangle extends MyShape {
 	@Override
 	public boolean contains(int x, int y) {
 		Rectangle2D.Double rect = new Rectangle2D.Double(startx, starty, width, height);
-		return rect.intersects(x-1, y-1, 1, 1);
+		return rect.intersects(x-(this.line/2), y-(this.line/2), this.line, this.line);
 	}
 
 	/* (non-Javadoc)

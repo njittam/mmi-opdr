@@ -1,5 +1,6 @@
 package MMI;
 import handlers.ButtonHandler;
+import handlers.ButtonHandler2;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -29,7 +30,13 @@ public class ButtonPanel extends JPanel {
 			this.add (this.b );
 			this.b.addActionListener ( new ButtonHandler (this,add));
 		}
-		
+			public ButtonPanel (RectPanel rp, String text, constants.functions2 add) {
+				super ();
+				this.rp = rp;
+				this.b = new JButton (text);
+				this.add (this.b );
+				this.b.addActionListener ( new ButtonHandler2 (this,add,rp));
+			}
 		/**
 		 * @param text
 		 */

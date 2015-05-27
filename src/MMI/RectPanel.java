@@ -9,11 +9,13 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
 import javax.swing.JPanel;
+import javax.swing.JSlider;
 
 import wiiusej.Wiimote;
 import MMI.constants.Directions;
 import MMI.constants.SHAPE;
 import MMI.constants.modes;
+import MMI.constants.sliders;
 import Shapes.MyEllipse;
 import Shapes.MyImage;
 import Shapes.MyLine;
@@ -67,14 +69,25 @@ public class RectPanel extends JPanel {
 	//const values over scroll
 	private int color_big_scroll = 1000;
 	private int color_small_scroll = 10;
-	private MyShape[] shapelist_scroll = {
+	MyShape[] shapelist_scroll = {
 			new MyText(),
 			new MyImage(),
 			new MyLine(), 
 			new MyEllipse(), 
-			new MyRectangle(),
-			null};
-
+			new MyRectangle()};
+			//null};
+	// slider data
+	private int colorSlider = 0;
+	public int shapeSlider = 0;
+	public int lineSlider = 5;
+	sliders last_changed = sliders.Shape; 
+	public boolean last = false;
+	public MyShape newshape = null;
+	public boolean drawnewshape= false;
+	
+	private String current_mode = "none";
+	private Color modeColor = Color.BLACK;
+	
 	/**
 	 * @param mote 
 	 * 
@@ -122,7 +135,9 @@ public class RectPanel extends JPanel {
 		}
 		this.repaint();
 	}
-
+	public void set_current_mode(String mode){
+		this.current_mode = mode;
+	}
 	/**
 	 * @param new_shape
 	 */
@@ -207,6 +222,8 @@ public class RectPanel extends JPanel {
 				this.selected = i;
 			this.repaint();
 		}
+		if (this.selected <0 || this.selected >= this.shapesList.size())
+			this.drawnewshape = false;
 	}
 
 	/**
@@ -395,6 +412,12 @@ public class RectPanel extends JPanel {
 		this.setTrashBin(trash_location);
 		this.draw_select(g2d);
 		this.drawTrashBin(g2d);
+		if (this.drawnewshape)
+			this.newshape.draw(g2d);
+		if (trash_location == Directions.SOUTH){
+			MyText text = new MyText(3,this.getHeight()-3,this.current_mode, this.modeColor );
+			text.draw(g2d);
+		}
 		//System.out.println("trasbin x1,y1,x2,y2\n");
 		//System.out.println("("+this.trashcan.getX1()+ "," + this.trashcan.getY1()+ ',' +this.trashcan.getX2()+ ',' +this.trashcan.getY2()+ ')');
 		super.repaint();
@@ -515,11 +538,59 @@ public class RectPanel extends JPanel {
 	 * 
 	 */
 	public void delete() {
-		// TODO Auto-generated method stub
 		mh.m = modes.DELETE;
 	}
 	public MyShape getSelected() {
-		// TODO Auto-generated method stub
 		return this.shapesList.get(this.selected);
+	}
+	public void SliderChanged(constants.sliders s){
+		this.last_changed = s;
+	}
+	
+	public MyShape getShape(int i, int line){
+		MyShape s = this.shapelist_scroll[i];
+		Class<?> c = s.getClass();
+		
+		try {
+			MyShape s2 = (MyShape) c.getConstructor().newInstance();
+			s2.setLine(line);
+			return s2;
+			
+			
+		} catch (InstantiationException | IllegalAccessException
+				| IllegalArgumentException
+				| InvocationTargetException | NoSuchMethodException
+				| SecurityException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return s;
+	}
+	
+	public void SliderChanged(JSlider Js) {
+		switch (this.last_changed){
+		case Shape:
+			this.shapeSlider = Js.getValue();
+			if (this.selected< 0 ||this.selected >= this.shapesList.size()){
+				this.selected = this.shapesList.size();
+				this.newshape = this.getShape(Js.getValue(),this.lineSlider);
+				this.drawnewshape =true;
+			} else{
+				this.change_shape_of_selected(this.shapelist_scroll[Js.getValue()]);
+				this.getSelected().setLine(this.lineSlider);
+			}
+			break;
+		case Line:
+			this.lineSlider = Js.getValue();
+			this.getSelected().setLine(this.lineSlider);
+			break;
+		case Color:
+			break;
+		case None:
+			break;
+		default:
+			break;
+		}
+		
 	}
 }

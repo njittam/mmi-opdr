@@ -55,7 +55,8 @@ public class Window extends JFrame{
 		RectPanel rp = new RectPanel ();
 		super.getContentPane().add (rp , BorderLayout.CENTER );
 		ButtonPane bp = new ButtonPane(rp);
-		super.getContentPane().add (bp , BorderLayout.EAST );
+		ButtonPane2 bp2 = new ButtonPane2(rp);
+		super.getContentPane().add (bp2 , BorderLayout.EAST);
 		//super.getContentPane().add (new SliderPane() , BorderLayout.NORTH);
 		super.setVisible ( true );
 	}

@@ -19,16 +19,34 @@ public abstract class MyShape {
 	protected int x1, y1;
 	public int x2;
 	public int y2;
+	public int line = 3;
 	protected int width, height, startx, starty;
 
 	/**
 	 * 
 	 */
 	public MyShape() {
-		this(0, 0, 0, 0);
+		int xmin = this.xmin;
+		int xmax = this.xmax;
+		int ymin = this.ymin;
+		int ymax = this.ymax;
+		xmin = RandomColor.randInt(xmin,xmax-1);
+		xmax = RandomColor.randInt(xmin + 1,xmax);
+		ymin = RandomColor.randInt(ymin,ymax-1);
+		ymax = RandomColor.randInt(ymin + 1,ymax);
+		this.x1 =xmin;
+		this.x2 =xmax;
+		this.y1 =ymin;
+		this.y2 =ymax;
 		c = (new RandomColor()).toColor();
 	}
-	
+	public void setLine (int line){
+		this.line = line;
+	}
+	public MyShape (int line){
+		this();
+		this.line = line;
+	}
 	/**
 	 * @param c
 	 */
@@ -80,7 +98,7 @@ public abstract class MyShape {
 	public void draw(Graphics2D g) {
 		g.setPaint(c);
 		update();
-		g.setStroke(new BasicStroke(3));
+		g.setStroke(new BasicStroke(this.line));
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
 				RenderingHints.VALUE_ANTIALIAS_ON);
 	}

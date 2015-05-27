@@ -1,17 +1,17 @@
 package Shapes;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import MMI.RandomColor;
 
 public class MyText extends MyShape {
 	private final String objectname = "MyText";
-	private String text = "Somebody tell me why I'm on my own";
+	private String text = "Click on edit to change this text";
 
 
 	private int size = 14;
@@ -30,6 +30,16 @@ public class MyText extends MyShape {
 
 	public MyText(int x1, int y1, int x2, int y2){
 		super(x1,y1,x2,y2);
+	}
+
+	public MyText(int x, int y, String text, Color c) {
+		this.x1=x;
+		this.x2 = x+2;
+		this.y1 = y-2;
+		this.y2 = y;
+		update();
+		this.setColor(c);
+		this.setText(text);
 	}
 
 	public void draw(Graphics2D g){

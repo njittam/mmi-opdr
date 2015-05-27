@@ -1,10 +1,12 @@
 package handlers;
 
+import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import MMI.RectPanel;
 import MMI.SliderPane;
-import MMI.constants.*;
+import MMI.constants.sliders;
 
 /**
  * @author mattijn
@@ -12,34 +14,22 @@ import MMI.constants.*;
  */
 public class SliderHandler implements ChangeListener{
 	private sliders s;
-	private SliderPane sp;
+	private RectPanel rp;
 	
-	/**
-	 * @param s
-	 * @param sp
-	 */
-	public SliderHandler (sliders s, SliderPane sp){
-		this.s = s;
-		this.sp = sp;
+	
+	public SliderHandler(sliders s, RectPanel rp) {
+		this.rp = rp;
+		this.s =s;
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see javax.swing.event.ChangeListener#stateChanged(javax.swing.event.ChangeEvent)
 	 */
 	@Override
 	public void stateChanged(ChangeEvent e) {
-		switch (s){
-		case GREEN:
-			
-			break;
-		case RED:
-			
-			break;
-		case BLUE:
-			
-			break;
-			
-		}
-		
+		rp.SliderChanged(s);
+		System.out.println(e.getSource());
+		System.out.println((JSlider) e.getSource());
+		rp.SliderChanged((JSlider) e.getSource());
 	}
 }

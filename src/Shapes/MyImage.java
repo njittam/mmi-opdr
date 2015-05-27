@@ -3,31 +3,46 @@ package Shapes;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
+
+import MMI.RandomColor;
 
 public class MyImage extends MyShape {
 	private final String objectname = "MyImage";
-	private Image img;
+	private String name = "42.jpg";
 	
 	public MyImage (){
-		
+		int xmin = super.xmin;
+		int xmax = super.xmax;
+		int ymin = super.ymin;
+		int ymax = super.ymax;
+		xmin = RandomColor.randInt(xmin,xmax-1);
+		xmax = RandomColor.randInt(xmin + 1,xmax);
+		ymin = RandomColor.randInt(ymin,ymax-1);
+		ymax = RandomColor.randInt(ymin + 1,ymax);
+		this.x1 =xmin;
+		this.x2 =xmax;
+		this.y1 =ymin;
+		this.y2 =ymax;
 	}
 	
 	public void draw(Graphics2D g2d){
 		super.draw(g2d);
-		ImageObserver io = new ImageObserver() {
-			
-			@Override
-			public boolean imageUpdate(Image img, int infoflags, int x, int y,
-					int width, int height) {
-				// TODO Auto-generated method stub
-				return false;
-			}
-		};
+		BufferedImage img = null;
+		try {
+		    img = ImageIO.read(new File(this.name));
+		} catch (IOException e) {
+			System.out.println("picture not found.");
+		}
 		super.update();
-		g2d.drawImage(img, super.startx, super.starty, super.width, super.height, io);
+		//g2d.drawImage(img, op, this.startx, this.starty);
+		g2d.drawImage(img, super.startx, super.starty, super.width, super.height, null);
 	}
 	
 	@Override
@@ -42,9 +57,9 @@ public class MyImage extends MyShape {
 
 	@Override
 	public void oncreate() {
-		String name = JOptionPane.showInputDialog("What is the file name?");
+		this.name = JOptionPane.showInputDialog("What is the file name?");
         System.out.println( "Hello " + name + '!');
-		img =  Toolkit.getDefaultToolkit().getImage(name);
+		//img =  Toolkit.getDefaultToolkit().getImage(name);
 	}
 
 }
