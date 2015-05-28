@@ -8,6 +8,7 @@ import javax.swing.SwingUtilities;
 import MMI.ButtonPanel;
 import MMI.ColorChooser;
 import MMI.RectPanel;
+import MMI.constants.Actions;
 import MMI.constants.functions2;
 import Shapes.MyShape;
 
@@ -27,7 +28,7 @@ public class ButtonHandler2 implements ActionListener{
 	public void actionPerformed(ActionEvent arg0) {
 		switch(function){
 		case Shape:
-			rp.set_current_mode("shape");
+			//rp.set_current_mode("shape");
 			if (rp.drawnewshape){
 				rp.addToList(rp.newshape);
 				rp.drawnewshape = false;
@@ -37,11 +38,11 @@ public class ButtonHandler2 implements ActionListener{
 			}
 			break;
 		case Edit:
-			rp.set_current_mode("Edit");
+			//rp.set_current_mode("Edit");
 			rp.getSelected().oncreate();
 			break;
 		case Move:
-			rp.set_current_mode("Move");
+			rp.set_current_mode("Move/ Select");
 			rp.mode();
 			break;
 		case Resize:
@@ -51,11 +52,27 @@ public class ButtonHandler2 implements ActionListener{
 		case Color:
 			//rp.set_current_mode("Color");
 			//ColorChooser cc = ;
+			rp.addAction(Actions.Color);
 			SwingUtilities.invokeLater (new Runnable (){
 				public void run (){;
 				new ColorChooser(rp);
 				}
 		    });
+			break;
+		case End:
+			rp.addAction(Actions.Done);
+			rp.Done();
+			break;
+		case None:
+			break;
+		case Select:
+			break;
+		case Start:
+			
+			rp.start();
+			rp.addAction(Actions.Start);
+			break;
+		default:
 			break;
 			
 		}

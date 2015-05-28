@@ -5,13 +5,18 @@ import handlers.MyListener;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 
 import wiiusej.Wiimote;
+import MMI.constants.Actions;
 import MMI.constants.Directions;
 import MMI.constants.SHAPE;
 import MMI.constants.modes;
@@ -49,8 +54,13 @@ public class RectPanel extends JPanel {
 	
 	public ArrayList<MyShape> shapesList = new ArrayList<MyShape>();
 	public ArrayList<MyPoint> pointList = new ArrayList<MyPoint>();
+	private ArrayList<constants.Actions> actionsList = new ArrayList<constants.Actions>();
+	private ArrayList<Long> timeList = new ArrayList<Long>();
 	private int modn = 1;
 	public RandomColor color ;
+	public String output = "out.csv";
+	
+	public long StartTime = System.nanoTime();
 
 	constants.SHAPE shape = constants.SHAPE.NONE;
 	MouseHandler mh = new MouseHandler(constants.SHAPE.NONE,this);
@@ -91,6 +101,7 @@ public class RectPanel extends JPanel {
 	
 	private String current_mode = "none";
 	private Color modeColor = Color.BLACK;
+	private boolean started = false;
 	
 	/**
 	 * @param mote 
@@ -226,10 +237,27 @@ public class RectPanel extends JPanel {
 				this.selected = i;
 			this.repaint();
 		}
-		if (this.selected <0 || this.selected >= this.shapesList.size())
+		MyShape s = getSelected();
+		this.shapesList.remove(s);
+		this.shapesList.add(s);
+		this.selected = this.shapesList.size() -1;
+		if (this.selected <0 || this.selected >= this.shapesList.size()){
 			this.drawnewshape = false;
+			this.actionsList.add(Actions.Unselect);
+		}else
+			this.actionsList.add(Actions.Select);
 	}
-
+	public void addAction (Actions a){
+		if (this.started){
+		this.actionsList.add(a);
+		timeList.add(System.nanoTime() - this.StartTime);
+		}
+	}
+	public void start(){
+		this.output = JOptionPane.showInputDialog("what is the ouput file?");
+		this.started  = true;
+		this.StartTime = System.nanoTime();
+	}
 	/**
 	 * @param d
 	 */
@@ -289,6 +317,7 @@ public class RectPanel extends JPanel {
 	 */
 	public void delete_selected_object(){
 		if 	(this.selected >= 0 && this.selected < this.shapesList.size() && this.inTrash(this.shapesList.get(selected))){
+			this.addAction(Actions.Delete);
 			this.shapesList.remove(selected);
 			selected = -1;
 		}
@@ -356,7 +385,21 @@ public class RectPanel extends JPanel {
 		}
 		this.repaint();
 	}
-
+	public void Done(){
+		this.started = false;
+		try {
+			PrintWriter writer = new PrintWriter(this.output, "UTF-8");
+			for (int i = 0; i < this.actionsList.size();i++)
+				writer.println(this.timeList.get(i) + "," + this.actionsList.get(i));
+			writer.close();
+		} catch (FileNotFoundException | UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("file error: next line will be tttc");
+			System.out.println(System.nanoTime()-this.StartTime);
+		}
+		
+	}
 	/**
 	 * @param x_new
 	 * @param y_new
@@ -579,9 +622,13 @@ public class RectPanel extends JPanel {
 				this.selected = this.shapesList.size();
 				this.newshape = this.getShape(Js.getValue(),this.lineSlider);
 				this.drawnewshape =true;
+				this.addAction(Actions.Preview);
+				repaint();
 			} else{
+				this.addAction(Actions.Change);
 				this.change_shape_of_selected(this.shapelist_scroll[Js.getValue()]);
 				this.getSelected().setLine(this.lineSlider);
+				repaint();
 			}
 			break;
 		case Line:

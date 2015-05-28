@@ -152,6 +152,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener {
 		int x=(int) e.getX();
 		int y=(int) e.getY();
 		if (m == modes.TOOL){
+			rp.addAction(Actions.Resize);
 			MyShape s = rp.getSelected();
 			rp.resize_selected(s.getX1(), s.getY1(), x, y);
 //			ms = rp.shapesList.get(rp.shapesList.size() -1);
@@ -162,6 +163,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener {
 //			rp.repaint();
 		}
 		if (m == modes.MODE){
+			rp.addAction(Actions.Move);
 			int dy= old_y  - e.getY();
 			int dx = old_x - e.getX();
 			if (index >= 0 && index < rp.shapesList.size()){

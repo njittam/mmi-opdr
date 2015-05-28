@@ -10,7 +10,7 @@ public class MyRectangleFilled extends MyShape {
 	/**
 	 * 
 	 */
-	private String objectname = "MyRectanglFilled";
+	private String objectname = "MyRectangleFilled";
 	public MyRectangleFilled() {
 		int xmin = super.xmin;
 		int xmax = super.xmax;
@@ -70,7 +70,7 @@ public class MyRectangleFilled extends MyShape {
 	@Override
 	public boolean contains(int x, int y) {
 		Rectangle2D.Double rect = new Rectangle2D.Double(startx, starty, width, height);
-		return rect.intersects(x-(this.line/2), y-(this.line/2), this.line, this.line);
+		return rect.intersects(x-2, y-2, 4, 4);
 	}
 
 	/* (non-Javadoc)

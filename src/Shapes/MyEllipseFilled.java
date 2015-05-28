@@ -75,7 +75,7 @@ private String objectname = "MyEllipClosed";
 	@Override
 	public boolean contains(int x, int y) {
 		Ellipse2D.Double ellipse = new Ellipse2D.Double(startx, starty, width,height);
-		return ellipse.intersects(x-(this.line/2), y-(this.line/2), this.line, this.line);
+		return ellipse.intersects(x-2, y-2, 4, 4);
 	}
 
 	@Override
