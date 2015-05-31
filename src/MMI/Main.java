@@ -13,7 +13,7 @@ public class Main {
 		SwingUtilities.invokeLater (new Runnable () {
 			public void run () {
 				System.out.println("ḧello world " + args.length);
-				new Window ();
+				new ConnectMote ();
 			}
 		});
 
