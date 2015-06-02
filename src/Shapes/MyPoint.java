@@ -10,9 +10,9 @@ import java.awt.geom.Ellipse2D;
  */
 public class MyPoint extends MyShape {
 
+	private String objectname = "Mypoint";
 	public int x;
 	public int y;
-	private String objectname = "Mypoint";
 	/**
 	 * creates an MyPoint object
 	 * 
@@ -57,7 +57,9 @@ public class MyPoint extends MyShape {
 	public boolean equals(MyPoint myPoint) {
 		return this.x == myPoint.x && this.y == myPoint.y;
 	}
-
+	public MyPoint(Color c){
+		super(c);
+	}
 	/* (non-Javadoc)
 	 * @see Shapes.MyShape#getoObjectName()
 	 */

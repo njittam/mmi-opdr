@@ -1,5 +1,6 @@
 package Shapes;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.geom.Ellipse2D;
 
@@ -7,7 +8,7 @@ import MMI.RandomColor;
 
 public class MyEllipseFilled extends MyShape {
 
-private String objectname = "MyEllipClosed";
+private String objectname = "MyEllipFilled";
 	
 	/**
 	 * 
@@ -29,16 +30,6 @@ private String objectname = "MyEllipClosed";
 	}
 
 	/**
-	 * @param x1
-	 * @param y1
-	 * @param x2
-	 * @param y2
-	 */
-	public MyEllipseFilled(int x1, int y1, int x2, int y2) {
-		super(x1, y1, x2, y2);
-	}
-
-	/**
 	 * @param x
 	 * @param y
 	 */
@@ -57,6 +48,27 @@ private String objectname = "MyEllipClosed";
 		this.y1 = ymin;
 		this.y2 = ymax;
 	}
+	public MyEllipseFilled(Color c){
+		super(c);
+	}
+	/**
+	 * @param x1
+	 * @param y1
+	 * @param x2
+	 * @param y2
+	 */
+	public MyEllipseFilled(int x1, int y1, int x2, int y2) {
+		super(x1, y1, x2, y2);
+	}
+
+	/* (non-Javadoc)
+	 * @see Shapes.MyShape#contains(int, int)
+	 */
+	@Override
+	public boolean contains(int x, int y) {
+		Ellipse2D.Double ellipse = new Ellipse2D.Double(startx, starty, width,height);
+		return ellipse.intersects(x-2, y-2, 4, 4);
+	}
 
 	/* (non-Javadoc)
 	 * @see Shapes.MyShape#draw(java.awt.Graphics2D)
@@ -67,15 +79,6 @@ private String objectname = "MyEllipClosed";
 		Ellipse2D.Double ellip = new Ellipse2D.Double(startx, starty, width,height);
 		g.fill(ellip);
 		//g.draw(ellip);
-	}
-
-	/* (non-Javadoc)
-	 * @see Shapes.MyShape#contains(int, int)
-	 */
-	@Override
-	public boolean contains(int x, int y) {
-		Ellipse2D.Double ellipse = new Ellipse2D.Double(startx, starty, width,height);
-		return ellipse.intersects(x-2, y-2, 4, 4);
 	}
 
 	@Override

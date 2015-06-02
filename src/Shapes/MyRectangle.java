@@ -1,4 +1,5 @@
 package Shapes;
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
 
@@ -28,18 +29,9 @@ public class MyRectangle extends MyShape {
 		this.y1 =ymin;
 		this.y2 =ymax;
 	}
-
-	/**
-	 * @param x1
-	 * @param y1
-	 * @param x2
-	 * @param y2
-	 */
-	public MyRectangle(int x1, int y1, int x2, int y2) {
-		super(x1, y1, x2, y2);
+	public MyRectangle(Color c){
+		super(c);
 	}
-	
-	
 	/**
 	 * @param x
 	 * @param y
@@ -56,6 +48,29 @@ public class MyRectangle extends MyShape {
 		this.y1 =ymin;
 		this.y2 =ymax;
 	}
+	
+	
+	/**
+	 * @param x1
+	 * @param y1
+	 * @param x2
+	 * @param y2
+	 */
+	public MyRectangle(int x1, int y1, int x2, int y2) {
+		super(x1, y1, x2, y2);
+	}
+
+	/* (non-Javadoc)
+	 * @see Shapes.MyShape#contains(int, int)
+	 */
+	@Override
+	public boolean contains(int x, int y) {
+		Rectangle2D.Double rect = new Rectangle2D.Double(startx, starty, width, height);
+		if (this.line < 5)
+			return rect.intersects(x-(10/2), y-(10/2), 10, 10);
+			else
+		return rect.intersects(x-(this.line/2), y-(this.line/2), this.line, this.line);
+	}
 
 	/* (non-Javadoc)
 	 * @see Shapes.MyShape#draw(java.awt.Graphics2D)
@@ -65,15 +80,6 @@ public class MyRectangle extends MyShape {
 		super.draw(g);
 		Rectangle2D.Double rect = new Rectangle2D.Double(startx, starty, width, height);
 		g.draw(rect);
-	}
-
-	/* (non-Javadoc)
-	 * @see Shapes.MyShape#contains(int, int)
-	 */
-	@Override
-	public boolean contains(int x, int y) {
-		Rectangle2D.Double rect = new Rectangle2D.Double(startx, starty, width, height);
-		return rect.intersects(x-(this.line/2), y-(this.line/2), this.line, this.line);
 	}
 
 	/* (non-Javadoc)

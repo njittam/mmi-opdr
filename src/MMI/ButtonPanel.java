@@ -15,8 +15,8 @@ public class ButtonPanel extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = -697478526173572538L;
-		public RectPanel rp;
 		JButton b;
+		public RectPanel rp;
 		
 		/**
 		 * @param rp

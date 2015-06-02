@@ -10,12 +10,12 @@ import javax.swing.JOptionPane;
 import MMI.RandomColor;
 
 public class MyText extends MyShape {
+	private String font = "Purisa";
 	private final String objectname = "MyText";
-	private String text = "Click on edit to change this text";
 
 
 	private int size = 14;
-	private String font = "Purisa";
+	private String text = "Click on edit to change this text";
 	
 	public MyText(){
 		int xmin = super.xmin;
@@ -31,7 +31,9 @@ public class MyText extends MyShape {
 	public MyText(int x1, int y1, int x2, int y2){
 		super(x1,y1,x2,y2);
 	}
-
+	public MyText(Color c){
+		super(c);
+	}
 	public MyText(int x, int y, String text, Color c) {
 		this.x1=x;
 		this.x2 = x+2;
@@ -40,6 +42,12 @@ public class MyText extends MyShape {
 		update();
 		this.setColor(c);
 		this.setText(text);
+	}
+
+	@Override
+	public boolean contains(int x, int y) {
+		// TODO Auto-generated method stub
+		return x>= Math.min(this.x1,this.x2) && x <= Math.max(this.x1,this.x2) && y >= Math.min(this.y1,this.y2) && y <= Math.max(this.y1,this.y2);
 	}
 
 	public void draw(Graphics2D g){
@@ -57,10 +65,22 @@ public class MyText extends MyShape {
 		g.drawString(this.text, Math.min(super.x1,super.x2), Math.max(super.y1,super.y2));
 		//g.drawString(this.text, super.x1, super.y1+(super.height/2));
 	}
+	public void fix_selectbox(){
+		setText(this.text);
+	}
+	@Override
+	public String getObjectName() {
+		return this.objectname;
+	}
 
-	public void setText(String text){
-		this.text = text;
-		this.x2 = this.x1 + text.length() * (size/2);
+	@Override
+	public void oncreate() {
+		String text = JOptionPane.showInputDialog("What is the text to dispay?");
+		if (text == null)
+			this.setText("null");
+		else
+			this.setText(text);
+
 	}
 	public void setCoords(int x1, int y1, int x2, int y2){
 		this.x1 = x1;
@@ -71,27 +91,9 @@ public class MyText extends MyShape {
 		this.size = this.height;
 		fix_selectbox();
 	}
-	@Override
-	public boolean contains(int x, int y) {
-		// TODO Auto-generated method stub
-		return x>= Math.min(this.x1,this.x2) && x <= Math.max(this.x1,this.x2) && y >= Math.min(this.y1,this.y2) && y <= Math.max(this.y1,this.y2);
-	}
-
-	@Override
-	public String getObjectName() {
-		return this.objectname;
-	}
-	public void fix_selectbox(){
-		setText(this.text);
-	}
-	@Override
-	public void oncreate() {
-		String text = JOptionPane.showInputDialog("What is the text to dispay?");
-		if (text == null)
-			this.setText("null");
-		else
-			this.setText(text);
-
+	public void setText(String text){
+		this.text = text;
+		this.x2 = this.x1 + text.length() * (size/2);
 	}
 
 }

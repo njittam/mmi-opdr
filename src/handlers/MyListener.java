@@ -42,24 +42,14 @@ public class MyListener implements WiimoteListener{
 	}
 
 	@Override
-	public void onIrEvent(IREvent e) {
-		
-	}
-
-	@Override
-	public void onMotionSensingEvent(MotionSensingEvent e) {
+	public void onClassicControllerInsertedEvent(
+			ClassicControllerInsertedEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void onExpansionEvent(ExpansionEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void onStatusEvent(StatusEvent e) {
+	public void onClassicControllerRemovedEvent(ClassicControllerRemovedEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -71,13 +61,7 @@ public class MyListener implements WiimoteListener{
 	}
 
 	@Override
-	public void onNunchukInsertedEvent(NunchukInsertedEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void onNunchukRemovedEvent(NunchukRemovedEvent e) {
+	public void onExpansionEvent(ExpansionEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -95,14 +79,30 @@ public class MyListener implements WiimoteListener{
 	}
 
 	@Override
-	public void onClassicControllerInsertedEvent(
-			ClassicControllerInsertedEvent e) {
+	public void onIrEvent(IREvent e) {
+		
+	}
+
+	@Override
+	public void onMotionSensingEvent(MotionSensingEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void onClassicControllerRemovedEvent(ClassicControllerRemovedEvent e) {
+	public void onNunchukInsertedEvent(NunchukInsertedEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onNunchukRemovedEvent(NunchukRemovedEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onStatusEvent(StatusEvent e) {
 		// TODO Auto-generated method stub
 		
 	}

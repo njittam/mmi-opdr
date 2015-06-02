@@ -1,4 +1,5 @@
 package Shapes;
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.geom.Ellipse2D;
 
@@ -31,17 +32,9 @@ public class MyEllipse extends MyShape {
 		this.y1 = ymin;
 		this.y2 = ymax;
 	}
-
-	/**
-	 * @param x1
-	 * @param y1
-	 * @param x2
-	 * @param y2
-	 */
-	public MyEllipse(int x1, int y1, int x2, int y2) {
-		super(x1, y1, x2, y2);
+	public MyEllipse(Color c){
+		super(c);
 	}
-
 	/**
 	 * @param x
 	 * @param y
@@ -62,14 +55,14 @@ public class MyEllipse extends MyShape {
 		this.y2 = ymax;
 	}
 
-	/* (non-Javadoc)
-	 * @see Shapes.MyShape#draw(java.awt.Graphics2D)
+	/**
+	 * @param x1
+	 * @param y1
+	 * @param x2
+	 * @param y2
 	 */
-	@Override
-	public void draw(Graphics2D g) {
-		super.draw(g);
-		Ellipse2D.Double ellip = new Ellipse2D.Double(startx, starty, width,height);
-		g.draw(ellip);
+	public MyEllipse(int x1, int y1, int x2, int y2) {
+		super(x1, y1, x2, y2);
 	}
 
 	/* (non-Javadoc)
@@ -78,7 +71,20 @@ public class MyEllipse extends MyShape {
 	@Override
 	public boolean contains(int x, int y) {
 		Ellipse2D.Double ellipse = new Ellipse2D.Double(startx, starty, width,height);
+		if (this.line < 5)
+		return ellipse.intersects(x-(10/2), y-(10/2), 10, 10);
+		else
 		return ellipse.intersects(x-(this.line/2), y-(this.line/2), this.line, this.line);
+	}
+
+	/* (non-Javadoc)
+	 * @see Shapes.MyShape#draw(java.awt.Graphics2D)
+	 */
+	@Override
+	public void draw(Graphics2D g) {
+		super.draw(g);
+		Ellipse2D.Double ellip = new Ellipse2D.Double(startx, starty, width,height);
+		g.draw(ellip);
 	}
 
 	@Override

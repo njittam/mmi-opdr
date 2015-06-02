@@ -3,6 +3,7 @@ package handlers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.SwingUtilities;
 
 import MMI.ButtonPanel;
@@ -14,18 +15,16 @@ import Shapes.MyShape;
 
 public class ButtonHandler2 implements ActionListener{
 
-	private ButtonPanel bp;
 	private functions2 function;
 	RectPanel rp;
 
 	public ButtonHandler2(ButtonPanel bp,functions2 add, RectPanel rp){
-		this.bp = bp;
 		this.function = add;
 		this.rp = rp;
 	}
-	
+
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
+	public void actionPerformed(final ActionEvent arg0) {
 		switch(function){
 		case Shape:
 			//rp.set_current_mode("shape");
@@ -39,7 +38,9 @@ public class ButtonHandler2 implements ActionListener{
 			break;
 		case Edit:
 			//rp.set_current_mode("Edit");
-			rp.getSelected().oncreate();
+			rp.addAction(Actions.Edit);
+			if (rp.getSelected() != null)
+				rp.getSelected().oncreate();
 			break;
 		case Move:
 			rp.set_current_mode("Move/ Select");
@@ -55,9 +56,9 @@ public class ButtonHandler2 implements ActionListener{
 			rp.addAction(Actions.Color);
 			SwingUtilities.invokeLater (new Runnable (){
 				public void run (){;
-				new ColorChooser(rp);
+				new ColorChooser(rp,(JButton) arg0.getSource());
 				}
-		    });
+			});
 			break;
 		case End:
 			rp.addAction(Actions.Done);
@@ -68,16 +69,19 @@ public class ButtonHandler2 implements ActionListener{
 		case Select:
 			break;
 		case Start:
-			
+
 			rp.start();
 			rp.addAction(Actions.Start);
 			break;
+		case unselect:
+			rp.unselect();
+			break;
 		default:
 			break;
-			
+
 		}
-			
-			
+
+
 	}
 
 }

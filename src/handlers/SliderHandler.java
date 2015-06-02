@@ -13,8 +13,8 @@ import MMI.constants.sliders;
  * @author Tijs
  */
 public class SliderHandler implements ChangeListener{
-	private sliders s;
 	private RectPanel rp;
+	private sliders s;
 	
 	
 	public SliderHandler(sliders s, RectPanel rp) {
@@ -28,8 +28,8 @@ public class SliderHandler implements ChangeListener{
 	@Override
 	public void stateChanged(ChangeEvent e) {
 		rp.SliderChanged(s);
-		System.out.println(e.getSource());
-		System.out.println((JSlider) e.getSource());
+		//System.out.println(e.getSource());
+		//System.out.println((JSlider) e.getSource());
 		rp.SliderChanged((JSlider) e.getSource());
 	}
 }

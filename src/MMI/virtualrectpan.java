@@ -3,9 +3,9 @@ package MMI;
 import java.awt.Point;
 
 public class virtualrectpan {
+	RectPanel rp;
 	private Point virtual_links_boven = new Point();
 	private Point virtual_rechts_onder = new Point();
-	RectPanel rp;
 	
 	public virtualrectpan(Point vlb, Point vro, RectPanel rp){
 		if (vlb.getX() > vro.getX()){

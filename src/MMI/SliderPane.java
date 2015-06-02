@@ -15,11 +15,11 @@ public class SliderPane extends Container{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	JSlider sRed;
-	JSlider sGreen;
-	JSlider sBlue;
-	JSlider s4;
 	public Color c;
+	JSlider s4;
+	JSlider sBlue;
+	JSlider sGreen;
+	JSlider sRed;
 	
 	/**
 	 * 

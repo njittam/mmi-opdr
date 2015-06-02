@@ -1,4 +1,5 @@
 package Shapes;
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.geom.Line2D;
 
@@ -40,19 +41,12 @@ public class MyLine extends MyShape{
 	}
 	
 	/**
-	 * @param x1
-	 * @param y1
-	 * @param x2
-	 * @param y2
-	 */
-	public MyLine(int x1, int y1, int x2, int y2) {
-		super(x1, y1, x2, y2);
-	}
-	
-	/**
 	 * @param x
 	 * @param y
 	 */
+	public MyLine(Color c){
+		super(c);
+	}
 	public MyLine(int x, int y) {
 		int xmin = super.xmin;
 		int xmax = super.xmax;
@@ -76,7 +70,29 @@ public class MyLine extends MyShape{
 			this.y2 = ymax;
 		}
 	}
+	
+	/**
+	 * @param x1
+	 * @param y1
+	 * @param x2
+	 * @param y2
+	 */
+	public MyLine(int x1, int y1, int x2, int y2) {
+		super(x1, y1, x2, y2);
+	}
 
+	/* (non-Javadoc)
+	 * @see Shapes.MyShape#contains(int, int)
+	 */
+	@Override
+	public boolean contains(int x, int y) {
+		Line2D.Double line = new Line2D.Double(x1, y1, x2,y2);
+		if (this.line < 5)
+			return line.intersects(x-(10/2), y-(10/2), 10, 10);
+			else
+		return line.intersects(x-(this.line/2), y-(this.line/2), this.line, this.line);
+	}
+	
 	/* (non-Javadoc)
 	 * @see Shapes.MyShape#draw(java.awt.Graphics2D)
 	 */
@@ -85,15 +101,6 @@ public class MyLine extends MyShape{
 		super.draw(g);
 		Line2D.Double line = new Line2D.Double(x1, y1, x2,y2);
 		g.draw(line);
-	}
-	
-	/* (non-Javadoc)
-	 * @see Shapes.MyShape#contains(int, int)
-	 */
-	@Override
-	public boolean contains(int x, int y) {
-		Line2D.Double line = new Line2D.Double(x1, y1, x2,y2);
-		return line.intersects(x-(this.line/2), y-(this.line/2), this.line, this.line);
 	}
 
 	/* (non-Javadoc)

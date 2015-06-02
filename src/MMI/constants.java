@@ -7,14 +7,14 @@ import java.awt.Color;
  * @author Tijs
  */
 public class constants {
-	public enum Directions {NORTH,EAST,SOUTH,WEST}; 
-	public enum SHAPE {NONE,LINE,RECT,ELLIPSE};
-	public enum functions { TOOL, RANDOMCOLOR , ADD, MOD, ELLIPSE ,LINE , RECTANGLE, MODE ,DELETE };
-	public enum functions2 {None, Select ,Resize ,Move, Color, Shape,Edit,End,Start};//this and funct_names should be the same size
-	public static String[] funct_names = {"None", "Select", "Resize", "Move/ Select",  "color", "add Shape","Edit","Done","Start"};
-	public enum  modes {TOOL , MODE, DELETE, COLOR};
-	public enum sliders {Color,Shape,Line, None};
-	public Color SliderColor;
-	public enum Actions {Select,Delete, Move, Unselect, Resize,Color,Add, Preview,Change, Start, Done };
+	public enum Actions {Add,Change, Color, Delete, Done,Move,Preview, Resize,Select, Start, Unselect, Edit }; 
+	public enum Directions {EAST,NORTH,SOUTH,WEST};
+	public enum functions { ADD, DELETE , ELLIPSE, LINE, MOD ,MODE , RANDOMCOLOR, RECTANGLE ,TOOL };
+	public enum functions2 {Color, Edit ,End ,Move, None, Resize,Select,Shape,Start, unselect};//this and funct_names should be the same size
+	public enum  modes {COLOR , DELETE, MODE, TOOL}
+	public enum SHAPE {ELLIPSE,LINE,NONE,RECT};
+	public enum sliders {Color,Line,None, Shape};
+	public static String[] funct_names = {"color","Edit" ,"Done" , "Move/ Select","None", "Resize" ,"Select","add Shape","Start","unselect"};
+	public Color SliderColor;;
 
 }

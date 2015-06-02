@@ -8,8 +8,6 @@ import java.util.Random;
  * @author Tijs
  */
 public class RandomColor {
-	 Color color;
-	
 	 /**
 	 * @param min
 	 * @param max
@@ -29,19 +27,14 @@ public class RandomColor {
 	    
 	}
 	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	public String toString(){
-		return this.color.toString();
-	}
+	 Color color;
 	
 	/**
-	 * @return
+	 * 
 	 */
-	public Color toColor() {
-		return this.color;
-	}
+	public RandomColor(){
+		this.color = new Color(randInt(0,255),randInt(0,255),randInt(0,255));	
+    }
 	
 	/**
 	 * 
@@ -51,9 +44,16 @@ public class RandomColor {
 	}
 	
 	/**
-	 * 
+	 * @return
 	 */
-	public RandomColor(){
-		this.color = new Color(randInt(0,255),randInt(0,255),randInt(0,255));	
-    }
+	public Color toColor() {
+		return this.color;
+	}
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	public String toString(){
+		return this.color.toString();
+	}
 }
