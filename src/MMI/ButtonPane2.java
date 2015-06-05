@@ -25,6 +25,8 @@ public class ButtonPane2 extends Container {
 		start_stop.setLayout(new GridBagLayout());
 		Container add_des = new Container();
 		add_des.setLayout(new GridBagLayout());
+		Container edit_copy = new Container();
+		edit_copy.setLayout(new GridBagLayout());
 		super.setLayout(new GridBagLayout());
 		start_stop = this.addButton(1,0,functions2.End,rp, start_stop);
 		start_stop = this.addButton(0, 0, functions2.Start, rp, start_stop);
@@ -35,7 +37,8 @@ public class ButtonPane2 extends Container {
 		add_des = this.addButton(0,6, functions2.Shape,rp,add_des);
 		add_des = this.addButton(1, 6, functions2.unselect, rp, add_des);
 		//this.addButton(0,4,functions2.Select,rp);
-		buttons = this.addButton(0, 7, functions2.Edit, rp, buttons);
+		edit_copy = this.addButton(0, 0, functions2.Edit, rp, edit_copy);
+		edit_copy = this.addButton(1, 0, functions2.Copy, rp, edit_copy);
 		JColorChooser cc = new JColorChooser();
 		JSlider shape = new JSlider(0, rp.shapelist_scroll.length -1);
 		shape.setMajorTickSpacing(1);
@@ -53,6 +56,7 @@ public class ButtonPane2 extends Container {
 		line.setMajorTickSpacing(5);
 		line.setPaintTicks(true);
 		line.setValue(3);
+		line.setPaintLabels(true);
 		line.setToolTipText("linethickness");
 		GridBagConstraints c1 = new GridBagConstraints();
 		c1.fill = GridBagConstraints.BOTH;
@@ -67,6 +71,8 @@ public class ButtonPane2 extends Container {
 		buttons.add(start_stop,c1);
 		c1.gridx = 1;
 		buttons.add(add_des, c1);
+		c1.gridx = 7;
+		buttons.add(edit_copy, c1);
 		this.add(buttons);
 		this.addSlider(1,0,shape,sliders.Shape,rp);
 		this.addSlider(2,0,line,sliders.Line,rp);

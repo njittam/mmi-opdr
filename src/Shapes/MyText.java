@@ -11,7 +11,7 @@ import MMI.RandomColor;
 
 public class MyText extends MyShape {
 	private String font = "Purisa";
-	private final String objectname = "MyText";
+	private final String objectname = "Text";
 
 
 	private int size = 14;
@@ -75,7 +75,7 @@ public class MyText extends MyShape {
 
 	@Override
 	public void oncreate() {
-		String text = JOptionPane.showInputDialog("What is the text to dispay?");
+		String text = JOptionPane.showInputDialog("What is the text to display?");
 		if (text == null)
 			this.setText("null");
 		else

@@ -8,7 +8,7 @@ import MMI.RandomColor;
 
 public class MyEllipseFilled extends MyShape {
 
-private String objectname = "MyEllipFilled";
+private String objectname = "Ellipse Filled";
 	
 	/**
 	 * 

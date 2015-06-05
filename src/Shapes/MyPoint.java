@@ -10,7 +10,7 @@ import java.awt.geom.Ellipse2D;
  */
 public class MyPoint extends MyShape {
 
-	private String objectname = "Mypoint";
+	private String objectname = "Point";
 	public int x;
 	public int y;
 	/**

@@ -12,8 +12,8 @@ import javax.swing.JOptionPane;
 import MMI.RandomColor;
 
 public class MyImage extends MyShape {
-	private String name = "42.jpg";
-	private final String objectname = "MyImage";
+	private String name = "./eifel.png";
+	private final String objectname = "Image";
 	
 	public MyImage (){
 		int xmin = super.xmin;

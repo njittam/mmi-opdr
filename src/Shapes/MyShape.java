@@ -214,4 +214,8 @@ update();
 		starty = Math.min(this.y1, this.y2);
 	
 	}
+	public int getLine() {
+		// TODO Auto-generated method stub
+		return this.line;
+	}
 }

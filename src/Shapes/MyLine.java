@@ -15,7 +15,7 @@ public class MyLine extends MyShape{
 	/**
 	 * 
 	 */
-	private String objectname = "MyLine";
+	private String objectname = "Line";
 	public MyLine() {
 		int xmin = super.xmin;
 		int xmax = super.xmax;

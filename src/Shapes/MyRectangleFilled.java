@@ -11,7 +11,7 @@ public class MyRectangleFilled extends MyShape {
 	/**
 	 * 
 	 */
-	private String objectname = "MyRectangleFilled";
+	private String objectname = "Rectangle Filled";
 	public MyRectangleFilled() {
 		int xmin = super.xmin;
 		int xmax = super.xmax;

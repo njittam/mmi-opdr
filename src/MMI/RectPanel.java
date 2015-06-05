@@ -78,6 +78,7 @@ public class RectPanel extends JPanel {
 	public MyShape newshape = null;
 
 	public String output = "out";
+	public int outputint = 0;
 	public ArrayList<MyPoint> pointList = new ArrayList<MyPoint>();
 	private int selected = 2;
 	
@@ -150,7 +151,7 @@ public class RectPanel extends JPanel {
 	public void addAction (Actions a){
 		if (this.started){
 			this.actionsList.add(a);
-			timeList.add(System.nanoTime() - this.StartTime);
+			timeList.add((int)(System.nanoTime() - this.StartTime)/1000000000l);
 		}
 	}
 	/**
@@ -253,8 +254,9 @@ public class RectPanel extends JPanel {
 
 	public void Done(){
 		this.started = false;
+		this.addAction(Actions.Done);
 		try {
-			PrintWriter writer = new PrintWriter(this.output + ".csv", "UTF-8");
+			PrintWriter writer = new PrintWriter(this.output+this.outputint + ".csv", "UTF-8");
 			for (int i = 0; i < this.timeList.size();i++){
 				this.timeList.get(i);
 				this.actionsList.get(i);
@@ -268,6 +270,8 @@ public class RectPanel extends JPanel {
 			System.out.println(System.nanoTime()-this.StartTime);
 		}
 		this.save();
+		int time = (int) ((System.nanoTime() - this.StartTime)/1000000000l);
+		JOptionPane.showInputDialog( "time = " + time +"s" );
 	}
 
 	/**
@@ -732,19 +736,27 @@ public class RectPanel extends JPanel {
 
 	}
 	public void start(){
-		String answer = "bla";
-		if (shapesList.size() != 0)
-		{
 
-			answer =JOptionPane.showInputDialog( "delete all objects before you start please.");
-		}else{
+		  JOptionPane.showInputDialog( "Click on OK if you are ready.");
 
-			this.shapesList.removeAll(this.shapesList);
-			this.output = JOptionPane.showInputDialog("what is the ouput file?");
+			//this.shapesList.removeAll(this.shapesList);
+			if (this.output == "out")
+				this.output = JOptionPane.showInputDialog("What is the name of the output file?");
+			else
+				this.outputint++;
 			this.started  = true;
 			this.StartTime = System.nanoTime();
-		}
+			this.addAction(Actions.Start);
 
+	}
+	public void copy_selected(){
+		MyShape s = this.getCopy(this.getSelected());
+		MyShape sel = this.getSelected();
+		s.setCoords(sel.getX1(), sel.getY1(), sel.x2, sel.y2);
+		s.setColor(sel.getColor());
+		s.setLine(sel.getLine());
+		this.shapesList.add(s);
+		this.selected = this.shapesList.size() -1;
 	}
 	/**
 	 * 

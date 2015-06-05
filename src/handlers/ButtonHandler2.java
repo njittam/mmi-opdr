@@ -76,6 +76,10 @@ public class ButtonHandler2 implements ActionListener{
 		case unselect:
 			rp.unselect();
 			break;
+		case Copy:
+			rp.addAction(Actions.Copy);
+			rp.copy_selected();
+			break;
 		default:
 			break;
 

@@ -14,7 +14,7 @@ public class MyRectangle extends MyShape {
 	/**
 	 * 
 	 */
-	private String objectname = "MyRectangle";
+	private String objectname = "Rectangle";
 	public MyRectangle() {
 		int xmin = super.xmin;
 		int xmax = super.xmax;

@@ -31,9 +31,9 @@ public class Window extends JFrame{
 		int xSize = ((int) tk.getScreenSize().getWidth());
 		int ySize = ((int) tk.getScreenSize().getHeight());
 		super.setSize(xSize,ySize);
-		this.setUndecorated(true);
-		this.getRootPane().setWindowDecorationStyle(JRootPane.ERROR_DIALOG);
-		this.setResizable(false);
+		//this.setUndecorated(true);
+		//this.getRootPane().setWindowDecorationStyle(JRootPane.ERROR_DIALOG);
+		//this.setResizable(false);
 		// Make sure the window appears in the middle of your screen
 		super . setLocationRelativeTo ( null );
 		// Determines what should happen when the frame is closed
